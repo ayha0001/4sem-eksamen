@@ -49,9 +49,9 @@ Navne er valgt ud fra funktion fremfor design:
 
 Eksempler:
 
-Header → sidens topnavigation
-FooterMedlem → specifik footer variant
-KnapRoed / KnapSort → visuelle variationer
+- Header → sidens topnavigation
+- FooterMedlem → specifik footer variant
+- KnapRoed / KnapSort → visuelle variationer
 
 ## Commit-strategi
 
@@ -64,10 +64,11 @@ Alle commits starter med en handling:
 - fikset → når fejl rettes
 
 Eksempler:
-"tilføjet header komponent"
-"tilføjet kontakt-os side"
-"fjernet ikon i header"
-"fikset readme fil"
+
+- "tilføjet header komponent"
+- "tilføjet kontakt-os side"
+- "fjernet ikon i header"
+- "fikset readme fil"
 
 ## Projektstruktur
 
