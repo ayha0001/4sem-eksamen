@@ -82,23 +82,28 @@ import Layout from "../layouts/Layout.astro";
     Vælg beløb
   </p>
 
+  <div class="grid grid-cols-3 gap-2">
+    <label class="cursor-pointer block">
+      <input type="radio" name="belob" value="89" checked class="peer sr-only" />
+      <span class="flex h-full min-h-[3rem] items-center justify-center rounded-lg border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] px-4 py-3 text-center text-m-p-big lg:text-p-big text-[var(--color-secondary)] transition duration-200 hover:bg-[var(--color-secondary)] hover:text-white peer-checked:bg-[var(--color-secondary)] peer-checked:text-white">
+        89 DKK
+      </span>
+    </label>
 
-    
-   <div class="grid grid-cols-3 gap-2">
-  
-  <Knap variant="secondary" size="medium">
-    89 DKK
-  </Knap>
+    <label class="cursor-pointer block">
+      <input type="radio" name="belob" value="149" class="peer sr-only" />
+      <span class="flex h-full min-h-12 items-center justify-center rounded-lg border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] px-4 py-3 text-center text-m-p-big lg:text-p-big text-[var(--color-secondary)] transition duration-200 hover:bg-[var(--color-secondary)] hover:text-white peer-checked:bg-[var(--color-secondary)] peer-checked:text-white">
+        149 DKK
+      </span>
+    </label>
 
-  <Knap variant="secondary" size="medium">
-    149 DKK
-  </Knap>
-
-  <Knap variant="secondary" size="medium">
-    299 DKK
-  </Knap>
-
-</div>
+    <label class="cursor-pointer block">
+      <input type="radio" name="belob" value="299" class="peer sr-only" />
+      <span class="flex h-full min-h-12 items-center justify-center rounded-lg border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] px-4 py-3 text-center text-m-p-big lg:text-p-big text-[var(--color-secondary)] transition duration-200 hover:bg-[var(--color-secondary)] hover:text-white peer-checked:bg-[var(--color-secondary)] peer-checked:text-white">
+        299 DKK
+      </span>
+    </label>
+  </div>
 
   <!-- Andet beløb -->
   <input 
@@ -116,13 +121,13 @@ import Layout from "../layouts/Layout.astro";
       Vælg betalingstype
     </p>
 
-    <div class="flex flex-wrap gap-6">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
       <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
         <input type="radio" name="payment" value="mobilepay" checked class="h-6 w-6 accent-[var(--color-primary)]" />
         MobilePay
       </label>
 
-      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-color-secondary">
         <input type="radio" name="payment" value="kort" class="h-6 w-6 accent-[var(--color-primary)]" />
         Betalingskort
       </label>
@@ -130,10 +135,26 @@ import Layout from "../layouts/Layout.astro";
   </div>
 
   <!-- Din knap -->
- <Knap variant="primary" size="medium">
+ <Knap variant="primary2" size="medium" type="button" id="paymentSubmit">
   Videre
 </Knap>
 
 </form>
+
+ <!-- Vibecoded med copilot - ikke sikkert det skal bruges -->
+<script type="module">
+  const paymentButton = document.getElementById('paymentSubmit');
+  paymentButton?.addEventListener('click', () => {
+    const selectedPayment = document.querySelector('input[name="payment"]:checked');
+    const paymentValue = selectedPayment?.value;
+
+    if (paymentValue === 'kort') {
+      window.location.href = '/betaling/kort';
+      return;
+    }
+
+    window.location.href = '/betaling/mobilepay';
+  });
+</script>
 	</section>
     </Layout>
