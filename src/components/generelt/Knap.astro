@@ -1,0 +1,44 @@
+---
+const { variant = "primary", size = "medium", icon = null, iconHover = null, type = "knap", ...attrs} = Astro.props;
+
+// Base styling (gælder alle knapper)
+const buttonStyling =
+  "border-2 px-12 rounded py-2 px-6 inline-flex items-center gap-2 transition-all duration-500 font-sans";
+
+// Varianter
+const variantClasses = {
+  primary:
+    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 hover:bg-[url('/assets/regnbue_hover.svg')] cursor-pointer",
+
+  primary2:
+    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 cursor-pointer",
+
+  secondary:
+    "bg-transparent border-black text-black hover:bg-black hover:text-white cursor-pointer",
+
+  secondary2:
+    "bg-black border-black text-white hover:bg-white hover:text-black hover:border-black cursor-pointer",
+};
+
+// Størrelser
+const sizeClasses = {
+  default: "text-default",
+  large: "text-base lg:text-xl",
+  medium: "text-sm lg:text-lg",
+  small: "text-base",
+};
+
+// Ikonstørrelser
+const iconSizeClasses = {
+  default: "w-6 h-6",
+  large: "w-8 h-8",
+  medium: "w-6 h-6",
+  small: "w-5 h-5",
+};
+
+const iconSize = iconSizeClasses[size];
+---
+
+<button type={type}{...attrs} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], "group", attrs.class]}>
+  <slot />
+  {icon && (<><img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]}/>{iconHover && (<img src={iconHover} alt="" class:list={[iconSize, "hidden group-hover:block"]}/>)}</>)}</button>
