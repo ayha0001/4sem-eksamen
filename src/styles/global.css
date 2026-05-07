@@ -4,6 +4,7 @@
 @import "tailwindcss";
 
 /* global variabler der bruges i hele projektet */
+
 :root {
   --title1: 74px;
   --title2: 40px;
@@ -41,6 +42,11 @@
   --color-accent-brown: var(--accent-brown);
   --color-background1: var(--background1);
   --color-background2: var(--background2);
+
+  --color-offwhite: var(--background1);
+  --color-burnedorange100: var(--primary);
+  --color-accent: var(--accent-pink);
+
 }
 
 body {
@@ -73,8 +79,14 @@ body {
   font-size: var(--m-title3);
 }
 
+/* mobile fonts */
+
+.text-m-title1 {
+  font-size: var(--m-title1);
+
 @utility text-p-big {
   font-size: var(--p-big);
+
 }
 
 @utility text-m-p-big {
