@@ -1,23 +1,23 @@
 ---
-const { variant = "primary", size = "medium", icon = null, iconHover = null, type = "knap", ...attrs} = Astro.props;
+const { variant = "primary", size = "medium", icon = null, center = false, iconHover = null, type = "knap", ...attrs} = Astro.props;
 
 // Base styling (gælder alle knapper)
 const buttonStyling =
-  "border-2 px-12 rounded py-2 px-6 inline-flex items-center gap-2 transition-all duration-500 font-sans";
+  "border-2 px-12 rounded py-2 px-6 inline-flex items-center gap-2 transition-all duration-500 font-body font-weight-bold";
 
 // Varianter
 const variantClasses = {
   primary:
-    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 hover:bg-[url('/assets/regnbue_hover.svg')] cursor-pointer",
+    "bg-[var(--primary)] border-[var(--primary)] text-[var(--background2)] hover:bg-[var(--background2)] hover:text-[var(--primary)] hover:border-[var(--primary)] cursor-pointer",
 
   primary2:
-    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 cursor-pointer",
+    "bg-[var(--primary)] border-[var(--primary)] text-[var(--background2)] hover:bg-[var(--background2)] hover:text-[var(--primary)] hover:border-[var(--primary)] cursor-pointer",
 
   secondary:
-    "bg-transparent border-black text-black hover:bg-black hover:text-white cursor-pointer",
+    "bg-transparent border-[var(--secondary)] text-[var(--secondary)] hover:bg-[var(--secondary)] hover:text-[var(--background2)] cursor-pointer",
 
   secondary2:
-    "bg-black border-black text-white hover:bg-white hover:text-black hover:border-black cursor-pointer",
+    "bg-[var(--secondary)] border-[var(--secondary)] text-[var(--background2)] hover:bg-[var(--background2)] hover:text-[var(--secondary)] hover:border-[var(--secondary)] cursor-pointer",
 };
 
 // Størrelser
@@ -39,6 +39,6 @@ const iconSizeClasses = {
 const iconSize = iconSizeClasses[size];
 ---
 
-<button type={type}{...attrs} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], "group", attrs.class]}>
+<button type={type}{...attrs} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], "group", "flex justify-center items-center text-center gap-2", attrs.class]}>
   <slot />
   {icon && (<><img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]}/>{iconHover && (<img src={iconHover} alt="" class:list={[iconSize, "hidden group-hover:block"]}/>)}</>)}</button>

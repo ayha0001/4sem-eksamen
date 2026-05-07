@@ -1,0 +1,139 @@
+---
+import Knap from "../components/generelt/Knap.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+
+	<main class="min-h-screen bg-(--color-background1) p-4 lg:p-8">
+
+	<section class="max-w-2xl mx-auto mt-8 mb-12 lg:mt-16 p-4 lg:p-8">
+        
+		<h1 class="text-center mb-8 font-bold text-m-title1 lg:text-title1" style="font-family: var(--font-h1); color: var(--color-primary);">STØT OS</h1>
+		
+        <!-- STEPS -->
+<div class="w-full max-w-xl mx-auto mb-10 font-body">
+
+  <!-- Tekst -->
+  <div class="flex justify-between text-m-p-small lg:text-p-big text-[var(--color-secondary)] mb-3">
+    <p>Vælg</p>
+    <p>Oplysninger</p>
+    <p>Betaling</p>
+    <p>Bekræftelse</p>
+  </div>
+
+  <!-- Linje + cirkler -->
+  <div class="relative flex justify-between items-center">
+
+    <!-- Linje -->
+    <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-[var(--color-primary)] -translate-y-1/2"></div>
+
+    <!-- Cirkel 1 -->
+    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] text-[var(--color-primary)] text-m-p-small lg:text-p-small">
+      1
+    </div>
+
+    <!-- Cirkel 2 -->
+    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] text-[var(--color-primary)] text-m-p-small lg:text-p-small">
+      2
+    </div>
+
+    <!-- Cirkel 3 -->
+    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] text-[var(--color-primary)] text-m-p-small lg:text-p-small">
+      3
+    </div>
+
+    <!-- Cirkel 4 -->
+    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] text-[var(--color-primary)] text-m-p-small lg:text-p-small">
+      4
+    </div>
+
+  </div>
+</div>
+
+      <form class="mx-auto flex w-full max-w-xl flex-col gap-8 font-body">
+
+  <!-- Vælg donationstype -->
+  <div>
+    <p class="mb-3 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+      Vælg donations typé
+    </p>
+
+    <div class="flex flex-wrap gap-x-6 gap-y-3">
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-secondary">
+        <input type="radio" name="donationstype" value="engang" class="h-6 w-6 accent-[var(--color-primary)]" />
+        Engangsdonation
+      </label>
+
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+        <input type="radio" name="donationstype" value="aarligt" checked class="h-6 w-6 accent-[var(--color-primary)]" />
+        Årligt medlemskab
+      </label>
+
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+        <input type="radio" name="donationstype" value="maanedligt" class="h-6 w-6 accent-[var(--color-primary)]" />
+        Månedligt medlemskab
+      </label>
+    </div>
+  </div>
+
+ <div>
+  <p class="mb-3 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+    Vælg beløb
+  </p>
+
+
+    
+   <div class="grid grid-cols-3 gap-2">
+  
+  <Knap variant="secondary" size="medium">
+    89 DKK
+  </Knap>
+
+  <Knap variant="secondary" size="medium">
+    149 DKK
+  </Knap>
+
+  <Knap variant="secondary" size="medium">
+    299 DKK
+  </Knap>
+
+</div>
+
+  <!-- Andet beløb -->
+  <input 
+    type="text"
+    name="andetbeloeb"
+    placeholder="Andet beløb"
+    inputmode="numeric"
+    class="mt-2 w-full rounded-md border-2 border-[var(--color-secondary)] bg-[var(--color-background1)] px-4 py-3 text-center text-m-p-big lg:text-p-big text-[var(--color-secondary)] placeholder:text-[var(--color-secondary)] focus:outline-none"
+  />
+</div>
+
+  <!-- Betalingstype -->
+  <div>
+    <p class="mb-3 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+      Vælg betalingstype
+    </p>
+
+    <div class="flex flex-wrap gap-6">
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+        <input type="radio" name="payment" value="mobilepay" checked class="h-6 w-6 accent-[var(--color-primary)]" />
+        MobilePay
+      </label>
+
+      <label class="flex cursor-pointer items-center gap-2 text-m-p-big lg:text-p-big text-[var(--color-secondary)]">
+        <input type="radio" name="payment" value="kort" class="h-6 w-6 accent-[var(--color-primary)]" />
+        Betalingskort
+      </label>
+    </div>
+  </div>
+
+  <!-- Din knap -->
+ <Knap variant="primary" size="medium">
+  Videre
+</Knap>
+
+</form>
+	</section>
+    </Layout>
