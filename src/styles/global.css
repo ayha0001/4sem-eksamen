@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 @import "tailwindcss";
 
-
+/* global variabler der bruges i hele projektet */
 :root {
   --title1: 74px;
   --title2: 40px;
@@ -11,27 +11,27 @@
   --p-big: 16px;
   --p-small: 14px;
   --visuals: 18px;
---visuals2: 64px;
- --m-title1: 35px;
+  --visuals2: 64px;
+  --m-title1: 35px;
   --m-title2: 24px;
   --m-title3: 20px;
   --m-p-big: 14px;
   --m-p-small: 12px;
   --m-visuals: 30px;
   --m-visuals2: 40px;
-  --font-weight-normal: 500;
+  --font-weight-normal: 400;
   --font-weight-bold: 700;
-  --primary: #D52122;
+  --primary: #d52122;
   --secondary: #232323;
-  --accent-pink: #FA6769;
-  --accent-blue: #C7F9FF;
-  --accent-brown: #3C0304;
-  --background1: #F6F6F6;
-  --background2: #FBFBFB;
+  --accent-pink: #fa6769;
+  --accent-blue: #c7f9ff;
+  --accent-brown: #3c0304;
+  --background1: #f6f6f6;
+  --background2: #fbfbfb;
 }
 
 @theme inline {
-      --font-h1: "Anton", sans-serif;
+  --font-h1: "Anton", sans-serif;
   --font-body: "Quicksand", sans-serif;
   --font-visuals: "Permanent Marker", sans-serif;
   --color-primary: var(--primary);
@@ -44,9 +44,10 @@
 }
 
 body {
-  color: var(--background1);
+  background-color: var(--background1);
   font-family: "Quicksand", sans-serif;
 }
+j
 
 /* desktop fonts */
 .text-title1 {
@@ -75,7 +76,6 @@ body {
 .text-visuals2 {
   font-size: var(--visuals2);
 }
-
 
 /* mobile fonts */
 
@@ -107,3 +107,10 @@ body {
   font-size: var(--m-visuals2);
 }
 
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
