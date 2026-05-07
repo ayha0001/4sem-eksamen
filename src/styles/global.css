@@ -47,63 +47,61 @@ body {
   background-color: var(--background1);
   font-family: "Quicksand", sans-serif;
 }
-j
 
-/* desktop fonts */
-.text-title1 {
+/* mobile fonts */
+@utility text-title1 {
   font-size: var(--title1);
 }
 
-.text-title2 {
-  font-size: var(--title2);
-}
-
-.text-title3 {
-  font-size: var(--title3);
-}
-
-.text-p-big {
-  font-size: var(--p-big);
-}
-
-.text-p-small {
-  font-size: var(--p-small);
-}
-
-.text-visuals {
-  font-size: var(--visuals);
-}
-.text-visuals2 {
-  font-size: var(--visuals2);
-}
-
-/* mobile fonts */
-
-.text-m-title1 {
+@utility text-m-title1 {
   font-size: var(--m-title1);
 }
 
-.text-m-title2 {
+@utility text-title2 {
+  font-size: var(--title2);
+}
+
+@utility text-m-title2 {
   font-size: var(--m-title2);
 }
 
-.text-m-title3 {
+@utility text-title3 {
+  font-size: var(--title3);
+}
+
+@utility text-m-title3 {
   font-size: var(--m-title3);
 }
 
-.text-m-p-big {
+@utility text-p-big {
+  font-size: var(--p-big);
+}
+
+@utility text-m-p-big {
   font-size: var(--m-p-big);
 }
 
-.text-m-p-small {
+@utility text-p-small {
+  font-size: var(--p-small);
+}
+
+@utility text-m-p-small {
   font-size: var(--m-p-small);
 }
 
-.text-m-visuals {
+@utility text-visuals {
+  font-size: var(--visuals);
+}
+
+@utility text-m-visuals {
   font-size: var(--m-visuals);
 }
 
-.text-m-visuals2 {
+@utility text-visuals2 {
+  font-size: var(--visuals2);
+}
+
+@utility text-m-visuals2 {
   font-size: var(--m-visuals2);
 }
 
