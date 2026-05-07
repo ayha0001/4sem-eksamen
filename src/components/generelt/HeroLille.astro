@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  image?: string;
+    background?: string;
+  color: string;
+}
+
+const { title, image, background, color } = Astro.props;
+---
+
+{/* Hvis der ikke er et billede, bruges baggrundsklassen i stedet. */}
+<section
+  class={`relative w-full md:h-68 ${
+    !image ? background : ""
+  }`}
+>
+  {/* Render kun <img>, når der faktisk er sendt en image-prop ind. */}
+  {
+    image && (
+      <img
+        src={image}
+        alt={title}
+        class="h-full w-full object-cover"
+      />
+    )
+  }
+
+  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
+    <h1 class={`font-h1 text-m-title1 md:text-title1 ${color}`}>
+      {title}
+    </h1>
+  </div>
+</section>

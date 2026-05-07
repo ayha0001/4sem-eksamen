@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 @import "tailwindcss";
 
+/* global variabler der bruges i hele projektet */
+
 :root {
   --title1: 74px;
   --title2: 40px;
@@ -18,7 +20,7 @@
   --m-p-small: 12px;
   --m-visuals: 30px;
   --m-visuals2: 40px;
-  --font-weight-normal: 500;
+  --font-weight-normal: 400;
   --font-weight-bold: 700;
   --primary: #d52122;
   --secondary: #232323;
@@ -40,60 +42,85 @@
   --color-accent-brown: var(--accent-brown);
   --color-background1: var(--background1);
   --color-background2: var(--background2);
+
   --color-offwhite: var(--background1);
   --color-burnedorange100: var(--primary);
   --color-accent: var(--accent-pink);
+
 }
 
-.text-title2 {
+body {
+  background-color: var(--background1);
+  font-family: "Quicksand", sans-serif;
+}
+
+/* mobile fonts */
+@utility text-title1 {
+  font-size: var(--title1);
+}
+
+@utility text-m-title1 {
+  font-size: var(--m-title1);
+}
+
+@utility text-title2 {
   font-size: var(--title2);
 }
 
-.text-title3 {
+@utility text-m-title2 {
+  font-size: var(--m-title2);
+}
+
+@utility text-title3 {
   font-size: var(--title3);
 }
 
-.text-p-big {
-  font-size: var(--p-big);
-}
-
-.text-p-small {
-  font-size: var(--p-small);
-}
-
-.text-visuals {
-  font-size: var(--visuals);
-}
-.text-visuals2 {
-  font-size: var(--visuals2);
+@utility text-m-title3 {
+  font-size: var(--m-title3);
 }
 
 /* mobile fonts */
 
 .text-m-title1 {
   font-size: var(--m-title1);
+
+@utility text-p-big {
+  font-size: var(--p-big);
+
 }
 
-.text-m-title2 {
-  font-size: var(--m-title2);
-}
-
-.text-m-title3 {
-  font-size: var(--m-title3);
-}
-
-.text-m-p-big {
+@utility text-m-p-big {
   font-size: var(--m-p-big);
 }
 
-.text-m-p-small {
+@utility text-p-small {
+  font-size: var(--p-small);
+}
+
+@utility text-m-p-small {
   font-size: var(--m-p-small);
 }
 
-.text-m-visuals {
+@utility text-visuals {
+  font-size: var(--visuals);
+}
+
+@utility text-m-visuals {
   font-size: var(--m-visuals);
 }
 
-.text-m-visuals2 {
+@utility text-visuals2 {
+  font-size: var(--visuals2);
+}
+
+@utility text-m-visuals2 {
   font-size: var(--m-visuals2);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
 }

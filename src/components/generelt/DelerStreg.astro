@@ -1,0 +1,13 @@
+---
+const { src, width } = Astro.props;
+---
+<div class="w-full flex justify-center my-10">
+  <img
+    src={src}
+    width={width}
+    height="auto"
+    alt="Illustration af streg, brugt til at skille sektionerne ad"
+    aria-hidden="true"
+  />
+</div>
+<!-- Divider width: 950 desk, 450 tablet, 250 mobile -->
