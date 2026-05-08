@@ -1,34 +1,41 @@
 ---
-const { variant = "primary", size = "medium", icon = null, iconHover = null, type = "knap", ...attrs} = Astro.props;
+const {
+  variant = "primary",
+  size = "medium",
+  icon = null,
+  iconHover = null,
+  type = "button",
+  ...attrs
+} = Astro.props;
 
-// Base styling (gælder alle knapper)
+// BASE STYLING
 const buttonStyling =
-  "border-2 px-12 rounded py-2 px-6 inline-flex items-center gap-2 transition-all duration-500 font-sans";
+  "relative overflow-hidden border-2 rounded py-2 px-6 inline-flex items-center justify-center transition-all duration-500 font-sans";
 
-// Varianter
+// VARIANTER
 const variantClasses = {
   primary:
-    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 hover:bg-[url('/assets/regnbue_hover.svg')] cursor-pointer",
+    "bg-primary border-primary text-background1 cursor-pointer",
 
   primary2:
-    "bg-red-600 border-red-600 text-white hover:bg-white hover:text-red-600 hover:border-red-600 cursor-pointer",
+    "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
 
   secondary:
-    "bg-transparent border-black text-black hover:bg-black hover:text-white cursor-pointer",
+    "bg-transparent border-black text-black hover:bg-black hover:text-background1 cursor-pointer",
 
   secondary2:
-    "bg-black border-black text-white hover:bg-white hover:text-black hover:border-black cursor-pointer",
+    "bg-black border-black text-background1 hover:bg-white hover:text-black hover:border-black cursor-pointer",
 };
 
-// Størrelser
+// STØRRELSER
 const sizeClasses = {
   default: "text-default",
-  large: "text-base lg:text-xl",
-  medium: "text-sm lg:text-lg",
-  small: "text-base",
+  large: "text-m-p-big lg:text-p-big px-20 py-3",
+  medium: "text-m-p-big lg:text-p-big px-10 py-2",
+  small: "text-m-p-big lg:text-p-big px-8 py-2",
 };
 
-// Ikonstørrelser
+// IKONSTØRRELSER
 const iconSizeClasses = {
   default: "w-6 h-6",
   large: "w-8 h-8",
@@ -36,9 +43,91 @@ const iconSizeClasses = {
   small: "w-5 h-5",
 };
 
+// HJERTE POSITIONER
+const heartPositionClasses = {
+  default: "right-8",
+  large: "right-12",
+  medium: "right-10",
+  small: "right-4",
+};
+
+// TEKST SHIFT
+const textShiftClasses = {
+  default: "group-hover:-translate-x-4",
+  large: "group-hover:-translate-x-8",
+  medium: "group-hover:-translate-x-6",
+  small: "group-hover:-translate-x-3",
+};
+
 const iconSize = iconSizeClasses[size];
+const heartPosition = heartPositionClasses[size];
+const textShift = textShiftClasses[size];
+
+const isPrimary = variant === "primary";
 ---
 
-<button type={type}{...attrs} class:list={[buttonStyling, variantClasses[variant], sizeClasses[size], "group", attrs.class]}>
-  <slot />
-  {icon && (<><img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]}/>{iconHover && (<img src={iconHover} alt="" class:list={[iconSize, "hidden group-hover:block"]}/>)}</>)}</button>
+<button
+  type={type}
+  {...attrs}
+  class:list={[
+    buttonStyling,
+    variantClasses[variant],
+    sizeClasses[size],
+    "group",
+    attrs.class,
+  ]}
+>
+  <!-- TEKST -->
+  <span
+    class:list={[
+      "transition-transform duration-500",
+      isPrimary && textShift,
+    ]}
+  >
+    <slot />
+  </span>
+
+  <!-- PRIMARY HOVER HJERTE -->
+  {isPrimary && (
+    <img
+      src="/assets/grafik/hjerte-fyld-hvid.svg"
+      alt=""
+      class:list={[
+        iconSize,
+        heartPosition,
+        `
+        absolute
+        top-1/2
+        -translate-y-1/2
+        translate-x-10
+        opacity-0
+        transition-all
+        duration-500
+        pointer-events-none
+
+        group-hover:translate-x-0
+        group-hover:opacity-100
+        `,
+      ]}
+    />
+  )}
+
+  <!-- IKONER TIL ANDRE VARIANTER -->
+  {!isPrimary && icon && (
+    <>
+      <img
+        src={icon}
+        alt=""
+        class:list={[iconSize, "group-hover:hidden"]}
+      />
+
+      {iconHover && (
+        <img
+          src={iconHover}
+          alt=""
+          class:list={[iconSize, "hidden group-hover:block"]}
+        />
+      )}
+    </>
+  )}
+</button>
