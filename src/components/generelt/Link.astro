@@ -1,0 +1,118 @@
+---
+interface Props {
+  href?: string;
+  target?: string;
+  variant?: "primary" | "primary2" | "secondary" | "secondary2" | "textlink";
+  size?: "default" | "large" | "medium" | "small";
+  icon?: string | null;
+  iconHover?: string | null;
+}
+
+const {
+  href = "#",
+  target = "_self",
+  variant = "primary",
+  size = "default",
+  icon = null,
+  iconHover = null,
+} = Astro.props;
+
+// Tjekker om varianten er et textlink
+const isTextlink = variant === "textlink";
+
+// Base styling til almindelige links/knapper
+const linkStyling =
+  "inline-flex items-center justify-center gap-2 rounded-md border-2 px-6 py-2 font-body font-bold transition-all duration-300";
+
+// Base styling kun til textlink
+const textlinkStyling =
+  "inline-flex items-center gap-2 font-body font-normal transition-all duration-300";
+
+// Vælger base styling afhængigt af variant
+const baseStyling = isTextlink ? textlinkStyling : linkStyling;
+
+/* Varianter */
+const variantClasses = {
+  primary:
+    "bg-primary border-primary text-background1 cursor-pointer",
+
+  primary2:
+    "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
+
+  secondary:
+    "bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-background1 cursor-pointer",
+
+  secondary2:
+    "bg-secondary border-secondary text-background1 hover:bg-white hover:text-secondary hover:border-secondary cursor-pointer",
+
+  textlink:
+    "border-none bg-transparent p-0 text-secondary hover:text-primary hover:translate-x-1",
+};
+
+/* Størrelser til almindelige links */
+const linkSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
+  large: "text-m-title3 lg:text-title3",
+  medium: "text-m-p-big lg:text-p-big",
+  small: "text-m-p-small lg:text-p-small",
+};
+
+/* Størrelser til textlink uden padding */
+const textlinkSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
+  large: "text-m-title3 lg:text-title3",
+  medium: "text-m-p-big lg:text-p-big",
+  small: "text-m-p-small lg:text-p-small",
+};
+
+// Vælger størrelse afhængigt af variant
+const sizeClasses = isTextlink
+  ? textlinkSizeClasses[size]
+  : linkSizeClasses[size];
+
+/* Ikon størrelser */
+const iconSizeClasses = {
+  default: "w-5 h-5",
+  large: "w-7 h-7",
+  medium: "w-6 h-6",
+  small: "w-4 h-4",
+};
+
+const iconSize = iconSizeClasses[size];
+---
+
+<a
+  href={href}
+  target={target}
+  rel={target === "_blank" ? "noopener noreferrer" : undefined}
+  class:list={[
+    baseStyling,
+    variantClasses[variant],
+    sizeClasses,
+    "group",
+  ]}
+>
+  <!-- Link tekst -->
+  <span>
+    <slot />
+  </span>
+
+  <!-- Ikoner -->
+  {icon && (
+    <>
+      <img
+        src={icon}
+        alt=""
+        class:list={[iconSize, "group-hover:hidden"]}
+      />
+
+      {iconHover && (
+        <img
+          src={iconHover}
+          alt=""
+          class:list={[iconSize, "hidden group-hover:block"]}
+        />
+      )}
+    </>
+  )}
+</a>

@@ -8,11 +8,24 @@ const {
   ...attrs
 } = Astro.props;
 
-// BASE STYLING
-const buttonStyling =
-  "relative overflow-hidden border-2 rounded py-2 px-6 inline-flex items-center justify-center transition-all duration-500 font-sans";
+// Tjekker om varianten er et tekstlink
+const isTextlink = variant === "textlink";
 
-// VARIANTER
+// Tjekker om varianten er primary, så hjertet kun vises dér
+const isPrimary = variant === "primary";
+
+// Base styling til almindelige knapper
+const buttonStyling =
+  "relative overflow-hidden border-2 rounded py-2 px-6 inline-flex items-center justify-center transition-all duration-500 font-body font-bold";
+
+// Base styling til textlink, så det ikke får knap-padding
+const textlinkStyling =
+  "inline-flex items-center gap-2 transition-all duration-300 font-body font-normal";
+
+// Vælger base styling alt efter variant
+const baseStyling = isTextlink ? textlinkStyling : buttonStyling;
+
+// Varianter
 const variantClasses = {
   primary:
     "bg-primary border-primary text-background1 cursor-pointer",
@@ -21,21 +34,37 @@ const variantClasses = {
     "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
 
   secondary:
-    "bg-transparent border-black text-black hover:bg-black hover:text-background1 cursor-pointer",
+    "bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-background1 cursor-pointer",
 
   secondary2:
-    "bg-black border-black text-background1 hover:bg-white hover:text-black hover:border-black cursor-pointer",
+    "bg-secondary border-secondary text-background1 hover:bg-white hover:text-secondary hover:border-secondary cursor-pointer",
+
+  textlink:
+    "border-none bg-transparent p-0 text-secondary hover:text-primary hover:translate-x-1 cursor-pointer",
 };
 
-// STØRRELSER
-const sizeClasses = {
-  default: "text-default",
+// Størrelser til knapper
+const buttonSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
   large: "text-m-p-big lg:text-p-big px-20 py-3",
   medium: "text-m-p-big lg:text-p-big px-10 py-2",
-  small: "text-m-p-big lg:text-p-big px-8 py-2",
+  small: "text-m-p-small lg:text-p-small px-8 py-2",
 };
 
-// IKONSTØRRELSER
+// Størrelser til textlink uden ekstra padding
+const textlinkSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
+  large: "text-m-p-big lg:text-p-big",
+  medium: "text-m-p-big lg:text-p-big",
+  small: "text-m-p-small lg:text-p-small",
+};
+
+// Vælger størrelse alt efter variant
+const sizeClasses = isTextlink
+  ? textlinkSizeClasses[size]
+  : buttonSizeClasses[size];
+
+// Ikonstørrelser
 const iconSizeClasses = {
   default: "w-6 h-6",
   large: "w-8 h-8",
@@ -43,7 +72,7 @@ const iconSizeClasses = {
   small: "w-5 h-5",
 };
 
-// HJERTE POSITIONER
+// Position på hjertet i primary-knappen
 const heartPositionClasses = {
   default: "right-8",
   large: "right-12",
@@ -51,7 +80,7 @@ const heartPositionClasses = {
   small: "right-4",
 };
 
-// TEKST SHIFT
+// Hvor meget teksten rykker sig på hover
 const textShiftClasses = {
   default: "group-hover:-translate-x-4",
   large: "group-hover:-translate-x-8",
@@ -62,22 +91,20 @@ const textShiftClasses = {
 const iconSize = iconSizeClasses[size];
 const heartPosition = heartPositionClasses[size];
 const textShift = textShiftClasses[size];
-
-const isPrimary = variant === "primary";
 ---
 
 <button
   type={type}
   {...attrs}
   class:list={[
-    buttonStyling,
+    baseStyling,
     variantClasses[variant],
-    sizeClasses[size],
+    sizeClasses,
     "group",
     attrs.class,
   ]}
 >
-  <!-- TEKST -->
+  <!-- Teksten i knappen/linket -->
   <span
     class:list={[
       "transition-transform duration-500",
@@ -87,7 +114,7 @@ const isPrimary = variant === "primary";
     <slot />
   </span>
 
-  <!-- PRIMARY HOVER HJERTE -->
+  <!-- Hjerte vises kun på primary-knappen -->
   {isPrimary && (
     <img
       src="/assets/grafik/hjerte-fyld-hvid.svg"
@@ -95,31 +122,15 @@ const isPrimary = variant === "primary";
       class:list={[
         iconSize,
         heartPosition,
-        `
-        absolute
-        top-1/2
-        -translate-y-1/2
-        translate-x-10
-        opacity-0
-        transition-all
-        duration-500
-        pointer-events-none
-
-        group-hover:translate-x-0
-        group-hover:opacity-100
-        `,
+        "absolute top-1/2 -translate-y-1/2 translate-x-10 opacity-0 transition-all duration-500 pointer-events-none group-hover:translate-x-0 group-hover:opacity-100",
       ]}
     />
   )}
 
-  <!-- IKONER TIL ANDRE VARIANTER -->
+  <!-- Ikoner til andre varianter end primary -->
   {!isPrimary && icon && (
     <>
-      <img
-        src={icon}
-        alt=""
-        class:list={[iconSize, "group-hover:hidden"]}
-      />
+      <img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]} />
 
       {iconHover && (
         <img
