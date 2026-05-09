@@ -4,60 +4,25 @@ import HeroLille from "../components/generelt/HeroLille.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 import KontaktHjaelp from "../components/testamente/KontaktHjaelp.astro";
 import DelerStreg from "../components/generelt/DelerStreg.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
 ---
 
 <Layout>
 <HeroLille title="Testamente" background="bg-background1" color="text-primary" />
 
-<section class="px-6 py-12 lg:px-12">
-  <div class="mx-auto grid max-w-5xl grid-cols-1 gap-10 lg:grid-cols-2 items-start">
-    
-    <!-- Tekstindhold i venstre side -->
-    <div>
-      <h2 class="font-body font-bold text-m-title2 lg:text-title2 text-secondary mb-6">
-        Giv værdi fra efterlivet
-      </h2>
 
-      <div class="space-y-5 font-body text-m-p-big lg:text-p-big text-secondary leading-relaxed">
-        <p>
-          Hos Hjælp Din Næste tror vi på at gode intentioner ikke kender nogen
-          grænser, derfor kan du testamentere til fordel for os og være med til
-          at hæve levestandard samt sikre et værdigt liv for samfundets mest
-          udsatte.
-        </p>
-
-        <p>
-          Det er gratis og gør mere, end du aner.
-        </p>
-
-        <p>
-          For at gøre det nemt og enkelt at oprette et testamente med donation
-          af arv, har vi indgået et samarbejde med virksomheden Dokument 24.
-        </p>
-
-        <p>
-          Hos Dokument 24 kan du oprette dit testamente ved at svare på 12-15
-          spørgsmål online. Når spørgsmålene er besvaret, får du straks et
-          skræddersyet testamente tilsendt pr. e-mail.
-        </p>
-      </div>
-    </div>
-
-    <!-- Billede i højre side -->
-    <figure class="w-full">
-      <img
-        src="/assets/img/testa-1.webp"
-        alt="Smil og omsorg på Vesterbro"
-        class="w-full rounded-md object-cover"
-      />
-
-      <figcaption class="mt-2 text-right font-body text-m-p-small lg:text-p-small text-secondary">
-        Smil og omsorg på Vesterbro
-      </figcaption>
-    </figure>
-
-  </div>
-</section>
+<TekstBillede
+  title="Giv værdi fra efterlivet"
+  paragraphs={[
+    "Hos Hjælp Din Næste tror vi på at gode intentioner ikke kender nogen grænser, derfor kan du testamentere til fordel for os og være med til at hæve levestandard samt sikre et værdigt liv for samfundets mest udsatte.",
+    "Det er gratis og gør mere, end du aner.",
+    "For at gøre det nemt og enkelt at oprette et testamente med donation af arv, har vi indgået et samarbejde med virksomheden Dokument 24.",
+    "Hos Dokument 24 kan du oprette dit testamente ved at svare på 12-15 spørgsmål online. Når spørgsmålene er besvaret, får du straks et skræddersyet testamente tilsendt pr. e-mail."
+  ]}
+  image="/assets/img/testa-1.webp"
+  imageAlt="Smil og omsorg på Vesterbro"
+  caption="Smil og omsorg på Vesterbro"
+/>
 
 <DelerStreg src="/assets/grafik/divider-grey.svg" width="950" />
 <KontaktHjaelp />
