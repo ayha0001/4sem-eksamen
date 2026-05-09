@@ -46,7 +46,6 @@
   --color-offwhite: var(--background1);
   --color-burnedorange100: var(--primary);
   --color-accent: var(--accent-pink);
-
 }
 
 body {
@@ -83,10 +82,10 @@ body {
 
 .text-m-title1 {
   font-size: var(--m-title1);
+}
 
 @utility text-p-big {
   font-size: var(--p-big);
-
 }
 
 @utility text-m-p-big {
