@@ -42,16 +42,14 @@
   --text-header-small: 12px;
   --text-p-big: 16px;
   --text-p-small: 14px;
-  --text-visuals: 18px;
-  --text-visuals2: 64px;
+  --text-visuals: 60px;
+  --text-visuals-quote: 36px;
 
   --text-m-title1: 35px;
   --text-m-title2: 24px;
   --text-m-title3: 20px;
   --text-m-p-big: 14px;
   --text-m-p-small: 12px;
-  --text-m-header-big: 18px;
-  --text-m-header-small: 12px;
   --text-m-visuals: 30px;
   --text-m-visuals2: 40px;
 
