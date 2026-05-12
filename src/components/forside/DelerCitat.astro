@@ -1,0 +1,27 @@
+---
+const {
+  quote = "Dette er første gang i årevis, at jeg ikke føler mig hjemløs",
+  source = "Citat fra tidligere hjemløs",
+  bg = "/assets/grafik/citat-bg-brown.svg",
+} = Astro.props;
+---
+
+<section class="relative w-full overflow-hidden bg-background1 py-4">
+  <img
+    src={bg}
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+
+  <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-10 md:flex-row items-end justify-center">
+    <blockquote class="w-full max-w-4xl font-visuals text-m-visuals uppercase leading-tight text-background2 lg:text-visuals-quote">
+      <span class="text-primary">“</span>
+      {quote}
+      <span class="text-primary">”</span>
+    </blockquote>
+
+    <p class="text-m-p-small text-background2 md:mb-4 md:text-p-small">
+      {source}
+    </p>
+  </div>
+</section>
