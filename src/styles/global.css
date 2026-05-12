@@ -6,22 +6,6 @@
 /* global variabler der bruges i hele projektet */
 
 :root {
-  --title1: 74px;
-  --title2: 40px;
-  --title3: 24px;
-  --p-big: 16px;
-  --p-small: 14px;
-  --visuals: 18px;
-  --visuals2: 64px;
-  --m-title1: 35px;
-  --m-title2: 24px;
-  --m-title3: 20px;
-  --m-p-big: 14px;
-  --m-p-small: 12px;
-  --m-visuals: 30px;
-  --m-visuals2: 40px;
-  --font-weight-normal: 400;
-  --font-weight-bold: 700;
   --primary: #d52122;
   --secondary: #232323;
   --accent-pink: #fa6769;
@@ -34,7 +18,8 @@
 @theme inline {
   --font-h1: "Anton", sans-serif;
   --font-body: "Quicksand", sans-serif;
-  --font-visuals: "Permanent Marker", sans-serif;
+  --font-visuals: "Permanent Marker", cursive;
+
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent-pink: var(--accent-pink);
@@ -43,83 +28,25 @@
   --color-background1: var(--background1);
   --color-background2: var(--background2);
 
-  --color-offwhite: var(--background1);
-  --color-burnedorange100: var(--primary);
-  --color-accent: var(--accent-pink);
+  --text-title1: 74px;
+  --text-title2: 40px;
+  --text-title3: 24px;
+  --text-p-big: 16px;
+  --text-p-small: 14px;
+  --text-visuals: 18px;
+  --text-visuals2: 64px;
+
+  --text-m-title1: 35px;
+  --text-m-title2: 24px;
+  --text-m-title3: 20px;
+  --text-m-p-big: 14px;
+  --text-m-p-small: 12px;
+  --text-m-visuals: 30px;
+  --text-m-visuals2: 40px;
 }
 
 body {
   background-color: var(--background1);
-  font-family: "Quicksand", sans-serif;
-}
-
-/* mobile fonts */
-@utility text-title1 {
-  font-size: var(--title1);
-}
-
-@utility text-m-title1 {
-  font-size: var(--m-title1);
-}
-
-@utility text-title2 {
-  font-size: var(--title2);
-}
-
-@utility text-m-title2 {
-  font-size: var(--m-title2);
-}
-
-@utility text-title3 {
-  font-size: var(--title3);
-}
-
-@utility text-m-title3 {
-  font-size: var(--m-title3);
-}
-
-/* mobile fonts */
-
-.text-m-title1 {
-  font-size: var(--m-title1);
-}
-
-@utility text-p-big {
-  font-size: var(--p-big);
-}
-
-@utility text-m-p-big {
-  font-size: var(--m-p-big);
-}
-
-@utility text-p-small {
-  font-size: var(--p-small);
-}
-
-@utility text-m-p-small {
-  font-size: var(--m-p-small);
-}
-
-@utility text-visuals {
-  font-size: var(--visuals);
-}
-
-@utility text-m-visuals {
-  font-size: var(--m-visuals);
-}
-
-@utility text-visuals2 {
-  font-size: var(--visuals2);
-}
-
-@utility text-m-visuals2 {
-  font-size: var(--m-visuals2);
-}
-
-.font-normal {
-  font-weight: var(--font-weight-normal);
-}
-
-.font-bold {
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-body);
+  color: var(--secondary);
 }

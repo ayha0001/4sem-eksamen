@@ -11,7 +11,7 @@ const { title, image, background, color } = Astro.props;
 
 {/* Hvis der ikke er et billede, bruges baggrundsklassen i stedet. */}
 <section
-  class={`relative w-full md:h-68 ${
+  class={`relative w-full md:h-44 ${
     !image ? background : ""
   }`}
 >
@@ -30,5 +30,10 @@ const { title, image, background, color } = Astro.props;
     <h1 class={`font-h1 text-m-title1 md:text-title1 ${color}`}>
       {title}
     </h1>
+ <img
+  src="/assets/grafik/deler-title.svg"
+  alt="Dekorativ streg under overskrift"
+  class="mt-1 w-150"
+/>
   </div>
 </section>
