@@ -10,7 +10,8 @@ interface Props {
     | "textlink"
     | "headerlink"
     | "headerlink-dropdown"
-    | "headerlink_dropdown";
+    | "headerlink_dropdown"
+    | "footerlink";
   size?: "default" | "large" | "medium" | "small";
   icon?: string | null;
   iconHover?: string | null;
@@ -26,8 +27,11 @@ const {
   ...attrs
 } = Astro.props;
 
-// Tjekker om varianten er et textlink eller headerlink
-const isTextlink = variant === "textlink" || variant === "headerlink";
+// Tjekker om varianten er et textlink, headerlink eller footerlink
+const isTextlink =
+  variant === "textlink" ||
+  variant === "headerlink" ||
+  variant === "footerlink";
 const isHeaderlinkDropdown =
   variant === "headerlink-dropdown" || variant === "headerlink_dropdown";
 
@@ -55,6 +59,10 @@ const baseStyling = isHeaderlinkDropdown
 /* Varianter */
 const variantClasses = {
   primary: "bg-primary border-primary text-background1 cursor-pointer",
+
+  footerlink: [
+    "relative border-none bg-transparent p-0 text-background1 cursor-pointer hover:opacity-80",
+  ].join(" "),
 
   primary2:
     "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
@@ -99,14 +107,24 @@ const headerlinkSizeClasses = {
   small: "text-m-header-small lg:text-header-small",
 };
 
+/* Størrelser til footerlink uden padding */
+const footerlinkSizeClasses = {
+  default: "text-m-p-big lg:text-p-big",
+  large: "text-m-title3 lg:text-title3",
+  medium: "text-m-header-big lg:text-header-big",
+  small: "text-m-p-small lg:text-p-small",
+};
+
 // Vælger størrelse afhængigt af variant
 const sizeClasses = isHeaderlinkDropdown
   ? headerlinkSizeClasses[size]
-  : isTextlink
-    ? variant === "textlink"
-      ? textlinkSizeClasses[size]
-      : headerlinkSizeClasses[size]
-    : linkSizeClasses[size];
+  : variant === "footerlink"
+    ? footerlinkSizeClasses[size]
+    : isTextlink
+      ? variant === "textlink"
+        ? textlinkSizeClasses[size]
+        : headerlinkSizeClasses[size]
+      : linkSizeClasses[size];
 
 /* Ikon størrelser */
 const iconSizeClasses = {
@@ -128,7 +146,13 @@ const iconSize = iconSizeClasses[size];
   class:list={[baseStyling, variantClasses[variant], sizeClasses, "group"]}
 >
   <!-- Link tekst -->
-  <span>
+  <span
+    class:list={[
+      variant === "footerlink"
+        ? "before:bg-background1 relative before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-0 before:transition-all before:duration-300 before:content-[''] group-hover:before:w-full"
+        : "",
+    ]}
+  >
     <slot />
   </span>
 
