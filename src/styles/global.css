@@ -13,6 +13,11 @@
   --accent-brown: #3c0304;
   --background1: #f6f6f6;
   --background2: #fbfbfb;
+  --ws-xl: 200px;
+  --ws-l: 120px;
+  --ws-m: 75px;
+  --ws-s: 40px;
+  --ws-xs: 20px;
 }
 
 @theme inline {
@@ -43,6 +48,12 @@
   --text-m-p-small: 12px;
   --text-m-visuals: 30px;
   --text-m-visuals2: 40px;
+
+  --spacing-ws-xl: var(--ws-xl);
+  --spacing-ws-l: var(--ws-l);
+  --spacing-ws-m: var(--ws-m);
+  --spacing-ws-s: var(--ws-s);
+  --spacing-ws-xs: var(--ws-xs);
 }
 
 body {
