@@ -2,11 +2,16 @@
 import Taeller from "./Taeller.astro";
 ---
 
-<section class="bg-background1 py-12">
-        <h2 class="text-3xl font-bold text-center text-primary mb-8">Hvad har vi opnået i 2025?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Taeller tekst1="Skabt et hjem for" nummer={19} tekst2="tidligere hjemløse" />
-            <Taeller tekst1="Omfordelt for en samlet værdi af" nummer={1621619} tekst2="kroner" />
-            <Taeller tekst1="Indsamlet og uddelt" nummer={250} tekst2="julegaver" />
-        </div>
-    </section>
+<section class='bg-background1 container mx-auto px-4 py-12'>
+  <h2 class='text-m-title2 md:text-title2 mb-2 text-center font-bold'>Hvad har vi opnået i 2025?</h2>
+  <p class='mx-auto mb-10 max-w-prose text-center'>
+    Som medlem deltager du aktivt i vores kamp for at hjælpe gadens folk. Du sørger for at folk på gaden får varmt tøj, værnemidler, soveposer og
+    andre redskaber mod kulden. Du bliver en hjemløseven og en del af vores vision for at hæve levestandarden og livskvaliteten for alle dem der lever
+    på gaden.
+  </p>
+  <div class='grid grid-cols-1 gap-8 md:grid-cols-3'>
+    <Taeller tekst1='Skabt et hjem for' nummer={19} tekst2='tidligere hjemløse' />
+    <Taeller tekst1='Omfordelt for en samlet værdi af' nummer={1621619} tekst2='kroner' underline={true} />
+    <Taeller tekst1='Indsamlet og uddelt' nummer={2500} tekst2='julegaver' />
+  </div>
+</section>
