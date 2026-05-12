@@ -13,6 +13,11 @@
   --accent-brown: #3c0304;
   --background1: #f6f6f6;
   --background2: #fbfbfb;
+  --ws-xl: 200px;
+  --ws-l: 120px;
+  --ws-m: 75px;
+  --ws-s: 40px;
+  --ws-xs: 20px;
 }
 
 @theme inline {
