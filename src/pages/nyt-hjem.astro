@@ -5,8 +5,12 @@ import HjaelpSektion from "../components/nyt-hjem/HjaelpSektion.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 ---
 
-<Layout>
-  <HeroLille title='Nyt Hjem' image='/assets/hej.jpeg' color='text-background1' />
+<Layout pagetitle="Nyt Hjem">
+  <HeroLille
+    title="Nyt Hjem"
+    image="/assets/hej.jpeg"
+    color="text-background1"
+  />
   <HjaelpSektion />
   <FooterMedlem />
 </Layout>
