@@ -1,0 +1,15 @@
+---
+interface Props {
+  tekst1: string;
+    nummer: number;
+      tekst2: string;
+}
+
+const { tekst1, nummer, tekst2 } = Astro.props;
+---
+
+<div>
+      <p>{tekst1}</p>
+  <h3>{nummer}</h2>
+  <p>{tekst2}</p>
+</div>
