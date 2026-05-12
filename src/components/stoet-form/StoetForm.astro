@@ -1,12 +1,11 @@
 ---
-import Knap from '../generelt/Knap.astro';
+import Link from '../generelt/Link.astro';
 ---
 
-<section class=" container mx-auto px-4 max-w-2xl mt-2 lg:mt-4">
-        
+<section class=" container mx-auto px-4 max-w-2xl mt-2 lg:mt-8">     
 		
         <!-- STEPS -->
-<div class="w-full max-w-xl mx-auto mb-10 font-body">
+<div class="w-full max-w-sm mx-auto mt-14 mb-8 font-body lg:max-w-xl lg:mb-10">
 
   <!-- Tekst -->
   <div class="flex justify-between text-m-p-small lg:text-p-big text-secondary mb-3">
@@ -38,7 +37,7 @@ import Knap from '../generelt/Knap.astro';
     </div>
 
     <!-- Cirkel 4 -->
-    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primarytext-m-p-small lg:text-p-small">
+    <div class="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-m-p-small lg:text-p-small">
       4
     </div>
 
@@ -129,25 +128,8 @@ import Knap from '../generelt/Knap.astro';
   </div>
 
   <!-- Din knap -->
- <Knap variant="primary2" size="medium" type="button" id="paymentSubmit">
+ <Link href="/oplysninger-form" variant="primary2" size="medium">
   Videre
-</Knap>
+</Link>
 
 </form>
-
- <!-- Vibecoded med copilot - ikke sikkert det skal bruges -->
-<script type="module">
-  const paymentButton = document.getElementById('paymentSubmit');
-  paymentButton?.addEventListener('click', () => {
-    const selectedPayment = document.querySelector('input[name="payment"]:checked');
-    const paymentValue = selectedPayment?.value;
-
-    if (paymentValue === 'kort') {
-      window.location.href = '/betaling/kort';
-      return;
-    }
-
-    window.location.href = '/betaling/mobilepay';
-  });
-</script>
-	</section>
