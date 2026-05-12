@@ -1,5 +1,19 @@
 ---
-const { ws } = Astro.props;
+// mapper for spacing values to CSS classes
+const spacing = {
+  xl: "h-ws-xl",
+  l: "h-ws-l",
+  m: "h-ws-m",
+  s: "h-ws-s",
+  xs: "h-ws-xs",
+};
+
+// laver en type for ws, som kun tillader de keys, der findes i spacing-objektet
+// sørger for man kun kan sende gyldige størrelser ind
+type Ws = keyof typeof spacing;
+
+// læser ws-prop og tjekker den mod Ws-typen, så vi er sikre på at den er gyldig
+const { ws } = Astro.props as { ws: Ws };
 ---
 
-<div class={`w-full h-ws-${ws}`}></div>
+<div class={`w-full ${spacing[ws]}`}></div>

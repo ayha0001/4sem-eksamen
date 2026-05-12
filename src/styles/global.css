@@ -48,6 +48,12 @@
   --text-m-p-small: 12px;
   --text-m-visuals: 30px;
   --text-m-visuals2: 40px;
+
+  --spacing-ws-xl: var(--ws-xl);
+  --spacing-ws-l: var(--ws-l);
+  --spacing-ws-m: var(--ws-m);
+  --spacing-ws-s: var(--ws-s);
+  --spacing-ws-xs: var(--ws-xs);
 }
 
 body {
