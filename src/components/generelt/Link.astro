@@ -2,7 +2,15 @@
 interface Props {
   href?: string;
   target?: string;
-  variant?: "primary" | "primary2" | "secondary" | "secondary2" | "textlink";
+  variant?:
+    | "primary"
+    | "primary2"
+    | "secondary"
+    | "secondary2"
+    | "textlink"
+    | "headerlink"
+    | "headerlink-dropdown"
+    | "headerlink_dropdown";
   size?: "default" | "large" | "medium" | "small";
   icon?: string | null;
   iconHover?: string | null;
@@ -15,10 +23,13 @@ const {
   size = "default",
   icon = null,
   iconHover = null,
+  ...attrs
 } = Astro.props;
 
-// Tjekker om varianten er et textlink
-const isTextlink = variant === "textlink";
+// Tjekker om varianten er et textlink eller headerlink
+const isTextlink = variant === "textlink" || variant === "headerlink";
+const isHeaderlinkDropdown =
+  variant === "headerlink-dropdown" || variant === "headerlink_dropdown";
 
 // Base styling til almindelige links/knapper
 const linkStyling =
@@ -28,13 +39,22 @@ const linkStyling =
 const textlinkStyling =
   "inline-flex items-center gap-2 font-body font-normal transition-all duration-300";
 
+// Base styling kun til headerlink
+const headerlinkStyling =
+  "inline-flex items-center gap-2 font-body font-normal transition-all duration-300";
+
 // Vælger base styling afhængigt af variant
-const baseStyling = isTextlink ? textlinkStyling : linkStyling;
+const baseStyling = isHeaderlinkDropdown
+  ? "inline-flex items-center gap-2 font-body font-normal transition-all duration-300"
+  : isTextlink
+    ? variant === "textlink"
+      ? textlinkStyling
+      : headerlinkStyling
+    : linkStyling;
 
 /* Varianter */
 const variantClasses = {
-  primary:
-    "bg-primary border-primary text-background1 cursor-pointer",
+  primary: "bg-primary border-primary text-background1 cursor-pointer",
 
   primary2:
     "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
@@ -47,6 +67,12 @@ const variantClasses = {
 
   textlink:
     "border-none bg-transparent p-0 text-secondary hover:text-primary hover:translate-x-1",
+
+  headerlink: "border-none bg-transparent p-0 text-secondary hover:opacity-50",
+  "headerlink-dropdown":
+    "border-none bg-transparent p-0 text-secondary flex items-center gap-2 cursor-default", // Ingen opacity hover
+  headerlink_dropdown:
+    "border-none bg-transparent p-0 text-secondary flex items-center gap-2 cursor-default", // Alias uden opacity hover
 };
 
 /* Størrelser til almindelige links */
@@ -65,10 +91,22 @@ const textlinkSizeClasses = {
   small: "text-m-p-small lg:text-p-small",
 };
 
+/* Størrelser til headerlink uden padding */
+const headerlinkSizeClasses = {
+  default: "text-m-header-big lg:text-header-big",
+  large: "text-m-header-big lg:text-header-big",
+  medium: "text-m-header-big lg:text-header-big",
+  small: "text-m-header-small lg:text-header-small",
+};
+
 // Vælger størrelse afhængigt af variant
-const sizeClasses = isTextlink
-  ? textlinkSizeClasses[size]
-  : linkSizeClasses[size];
+const sizeClasses = isHeaderlinkDropdown
+  ? headerlinkSizeClasses[size]
+  : isTextlink
+    ? variant === "textlink"
+      ? textlinkSizeClasses[size]
+      : headerlinkSizeClasses[size]
+    : linkSizeClasses[size];
 
 /* Ikon størrelser */
 const iconSizeClasses = {
@@ -85,12 +123,9 @@ const iconSize = iconSizeClasses[size];
   href={href}
   target={target}
   rel={target === "_blank" ? "noopener noreferrer" : undefined}
-  class:list={[
-    baseStyling,
-    variantClasses[variant],
-    sizeClasses,
-    "group",
-  ]}
+  aria-disabled={isHeaderlinkDropdown ? "true" : undefined}
+  {...attrs}
+  class:list={[baseStyling, variantClasses[variant], sizeClasses, "group"]}
 >
   <!-- Link tekst -->
   <span>
@@ -98,21 +133,42 @@ const iconSize = iconSizeClasses[size];
   </span>
 
   <!-- Ikoner -->
-  {icon && (
-    <>
-      <img
-        src={icon}
-        alt=""
-        class:list={[iconSize, "group-hover:hidden"]}
-      />
-
-      {iconHover && (
-        <img
-          src={iconHover}
-          alt=""
-          class:list={[iconSize, "hidden group-hover:block"]}
+  {
+    isHeaderlinkDropdown ? (
+      <svg
+        class:list={[
+          "h-4 w-4 transition-transform duration-300",
+          "group-hover:-rotate-180",
+          "group-[.mega-open]:-rotate-180",
+        ]}
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19 9l-7 7-7-7"
         />
-      )}
-    </>
-  )}
+      </svg>
+    ) : (
+      icon && (
+        <>
+          <img
+            src={icon}
+            alt=""
+            class:list={[iconSize, "group-hover:hidden"]}
+          />
+          {iconHover && (
+            <img
+              src={iconHover}
+              alt=""
+              class:list={[iconSize, "hidden group-hover:block"]}
+            />
+          )}
+        </>
+      )
+    )
+  }
 </a>
