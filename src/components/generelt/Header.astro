@@ -1,0 +1,320 @@
+---
+import Knap from "./Knap.astro";
+import Link from "./Link.astro";
+
+const {} = Astro.props;
+---
+
+<header
+  id="site-header"
+  class="bg-background1 sticky top-0 z-50 flex w-full flex-col shadow"
+>
+  <div class="flex w-full items-center justify-between px-6 py-4">
+    <a href="/" class="inline-flex flex-shrink-0 items-center gap-4 pr-50">
+      <img src="/assets/grafik/logo_hænder.svg" alt="Logo" class="h-10" />
+      <span
+        class="font-wordmark text-primary text-[36px] font-semibold text-nowrap"
+      >
+        HJÆLP DiN NÆSTE
+      </span>
+    </a>
+
+    <nav class="flex w-full items-center justify-between">
+      <Link
+        href="/"
+        variant="headerlink-dropdown"
+        size="medium"
+        data-mega-trigger="projekter"
+        aria-haspopup="true"
+      >
+        Projekter
+      </Link>
+
+      <Link
+        href="/"
+        variant="headerlink-dropdown"
+        size="medium"
+        data-mega-trigger="omos"
+        aria-haspopup="true"
+      >
+        Om os
+      </Link>
+
+      <Link href="/bliv-frivillig" variant="headerlink" size="medium"
+        >Bliv frivilig</Link
+      >
+      <Link href="/partnere" variant="headerlink" size="medium"
+        >Bliv partner</Link
+      >
+
+      <Link
+        href="/"
+        variant="headerlink-dropdown"
+        size="medium"
+        data-mega-trigger="doner"
+        aria-haspopup="true"
+      >
+        Doner
+      </Link>
+
+      <Link href="/kontakt-os" variant="headerlink" size="medium"
+        >Kontakt os</Link
+      >
+      <Knap href="/stot-nu" variant="primary" size="medium">STØT NU</Knap>
+    </nav>
+  </div>
+
+  <section
+    id="mega-menu"
+    class="pointer-events-none relative w-full overflow-hidden opacity-0 shadow-lg"
+    style="max-height: 0; transition: max-height 0.4s ease, opacity 0.4s ease;"
+    aria-hidden="true"
+  >
+    <!-- Secondary baseline streg -->
+    <div class="bg-secondary h-[2px] w-full"></div>
+    <!-- Primary indikator der slides under aktivt link -->
+    <div
+      id="mega-indicator"
+      class="bg-primary absolute top-0 h-[2px] transition-all duration-300"
+      style="left: 0; width: 0;"
+    >
+    </div>
+    <div
+      data-mega-panel="projekter"
+      class="hidden w-full grid-cols-4 gap-6 px-16 py-8"
+    >
+      <div class="flex flex-col gap-2">
+        <h3 class="text-m-title3 md:text-title3">Projekter</h3>
+        <Link href="/uddelinger" variant="headerlink" size="medium"
+          >Uddelinger</Link
+        >
+        <Link href="/baeredygtighed" variant="headerlink" size="medium"
+          >Bæredygtighed</Link
+        >
+        <Link href="/nyt-hjem" variant="headerlink" size="medium"
+          >Et nyt hjem</Link
+        >
+        <Link href="/julegaveindsamling" variant="headerlink" size="medium"
+          >Julegaver</Link
+        >
+      </div>
+      <div></div>
+      <div class="flex flex-col justify-center gap-3">
+        <div class="font-visuals text-secondary text-[32px] leading-none">
+          Støt os
+        </div>
+        <p class="text-secondary/80 max-w-xs text-sm">
+          Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på
+          knappen her
+        </p>
+        <Link href="/vaernemidler" variant="textlink" size="small"
+          >Værnemidler ➜</Link
+        >
+        <Link href="/testamente" variant="textlink" size="small"
+          >Testamente ➜</Link
+        >
+        <Knap href="/stot-nu" variant="primary2" size="medium">STØT NU</Knap>
+      </div>
+      <div class="flex items-center justify-end">
+        <img
+          src="/assets/img/genm-2.webp"
+          alt="Projekter"
+          class="h-full w-full max-w-[320px] rounded object-cover"
+        />
+      </div>
+    </div>
+
+    <div
+      data-mega-panel="omos"
+      class="hidden w-full grid-cols-4 gap-6 px-16 py-8"
+    >
+      <div class="flex flex-col gap-2">
+        <h3 class="text-m-title3 md:text-title3">Om os</h3>
+        <Link href="/hvem-er-vi" variant="headerlink" size="medium"
+          >Hvem er vi?</Link
+        >
+        <Link href="/faq" variant="headerlink" size="medium">FAQ</Link>
+        <Link href="/gennemsigtighed" variant="headerlink" size="medium"
+          >Gennemsigtighed</Link
+        >
+        <Link href="/udtalelser" variant="headerlink" size="medium"
+          >Udtalelser</Link
+        >
+      </div>
+      <div></div>
+      <div class="flex flex-col justify-center gap-3">
+        <div class="font-visuals text-secondary text-[32px] leading-none">
+          Støt os
+        </div>
+        <p class="text-secondary/80 max-w-xs text-sm">
+          Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på
+          knappen her
+        </p>
+        <Link href="/vaernemidler" variant="textlink" size="small"
+          >Værnemidler ➜</Link
+        >
+        <Link href="/testamente" variant="textlink" size="small"
+          >Testamente ➜</Link
+        >
+        <Knap href="/stot-nu" variant="primary2" size="medium">STØT NU</Knap>
+      </div>
+      <div class="flex items-center justify-end">
+        <img
+          src="/assets/img/genm-2.webp"
+          alt="Projekter"
+          class="h-full w-full max-w-[320px] rounded object-cover"
+        />
+      </div>
+    </div>
+
+    <div
+      data-mega-panel="doner"
+      class="hidden w-full grid-cols-4 gap-6 px-16 py-8"
+    >
+      <div class="flex flex-col gap-2">
+        <h3 class="text-m-title3 md:text-title3">Doner</h3>
+        <Link href="/stoet-os" variant="headerlink" size="medium">Støt os</Link>
+        <Link href="/vaernemidler" variant="headerlink" size="medium"
+          >Værnemidler</Link
+        >
+        <Link href="/testamente" variant="headerlink" size="medium"
+          >Testamente</Link
+        >
+        <Link href="/kontakt-os" variant="headerlink" size="medium"
+          >Kontakt os</Link
+        >
+      </div>
+      <div></div>
+      <div class="flex flex-col justify-center gap-3">
+        <div class="font-visuals text-secondary text-[32px] leading-none">
+          Støt os
+        </div>
+        <p class="text-secondary/80 max-w-xs text-sm">
+          Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på
+          knappen her
+        </p>
+        <Link href="/vaernemidler" variant="textlink" size="small"
+          >Værnemidler ➜</Link
+        >
+        <Link href="/testamente" variant="textlink" size="small"
+          >Testamente ➜</Link
+        >
+        <Knap href="/stot-nu" variant="primary2" size="medium">STØT NU</Knap>
+      </div>
+      <div class="flex items-center justify-end">
+        <img
+          src="/assets/img/genm-2.webp"
+          alt="Projekter"
+          class="h-full w-full max-w-[320px] rounded object-cover"
+        />
+      </div>
+    </div>
+  </section>
+</header>
+
+<script is:inline type="module">
+  const header = document.getElementById("site-header");
+  const megaMenu = document.getElementById("mega-menu");
+  const triggers = document.querySelectorAll("[data-mega-trigger]");
+  const panels = document.querySelectorAll("[data-mega-panel]");
+
+  if (header && megaMenu && triggers.length) {
+    const indicator = document.getElementById("mega-indicator");
+
+    const showPanel = (key, triggerEl) => {
+      panels.forEach((panel) => panel.classList.add("hidden"));
+
+      const activePanel = document.querySelector(`[data-mega-panel="${key}"]`);
+
+      if (activePanel) {
+        activePanel.classList.remove("hidden");
+        activePanel.classList.add("grid");
+      }
+
+      // Markér aktiv trigger så Link-komponenten kan rotere pilen
+      triggers.forEach((trigger) => trigger.classList.remove("mega-open"));
+      if (triggerEl) {
+        triggerEl.classList.add("mega-open");
+      }
+
+      // Mål det faktiske indhold så animationen er præcis
+      megaMenu.style.maxHeight = megaMenu.scrollHeight + "px";
+      megaMenu.classList.remove("opacity-0", "pointer-events-none");
+      megaMenu.classList.add("opacity-100", "pointer-events-auto");
+      megaMenu.setAttribute("aria-hidden", "false");
+
+      if (indicator && triggerEl) {
+        const rect = triggerEl.getBoundingClientRect();
+        const headerRect = header.getBoundingClientRect();
+        indicator.style.left = rect.left - headerRect.left - 6 + "px";
+        indicator.style.width = rect.width + "px";
+      }
+    };
+
+    const hideMenu = () => {
+      megaMenu.style.maxHeight = "0";
+      megaMenu.classList.add("opacity-0", "pointer-events-none");
+      megaMenu.classList.remove("opacity-100", "pointer-events-auto");
+      megaMenu.setAttribute("aria-hidden", "true");
+      triggers.forEach((trigger) => trigger.classList.remove("mega-open"));
+      // Vent til animation er færdig før panels skjules
+      megaMenu.addEventListener(
+        "transitionend",
+        () => {
+          if (
+            megaMenu.style.maxHeight === "0px" ||
+            megaMenu.style.maxHeight === "0"
+          ) {
+            panels.forEach((panel) => panel.classList.add("hidden"));
+          }
+        },
+        { once: true },
+      );
+    };
+
+    let hideTimeout;
+
+    const scheduleHide = () => {
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        hideMenu();
+      }, 100); // 100ms buffer så man kan nå fra trigger til menu
+    };
+
+    const cancelHide = () => {
+      clearTimeout(hideTimeout);
+    };
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("mouseenter", () => {
+        showPanel(trigger.dataset.megaTrigger, trigger);
+        cancelHide();
+      });
+      trigger.addEventListener("focus", () => {
+        showPanel(trigger.dataset.megaTrigger, trigger);
+        cancelHide();
+      });
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+      trigger.addEventListener("mouseleave", scheduleHide);
+    });
+
+    // Luk menuen når man hover over links i NAV (topbar) som IKKE er dropdown-triggers
+    const nav = header.querySelector("nav");
+    if (nav) {
+      nav.querySelectorAll("a, button").forEach((el) => {
+        if (!el.dataset.megaTrigger) {
+          el.addEventListener("mouseenter", hideMenu);
+        }
+      });
+    }
+
+    // Hvis musen forlader header ELLER megamenu, så planlæg lukning
+    header.addEventListener("mouseleave", scheduleHide);
+    megaMenu.addEventListener("mouseleave", scheduleHide);
+    // Hvis musen går ind i header eller menu, annuller lukning
+    header.addEventListener("mouseenter", cancelHide);
+    megaMenu.addEventListener("mouseenter", cancelHide);
+  }
+</script>

@@ -1,13 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import TaellerSektion from "../components/forside/TaellerSektion.astro";
+import MissionSektion from "../components/forside/MissionSektion.astro";
 import DelerStreg from "../components/generelt/DelerStreg.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 ---
 
-<Layout>
+<Layout pagetitle="Forside">
   <TaellerSektion />
-  <DelerStreg src='/assets/grafik/divider_red.svg' width='250' />
-
+  <MissionSektion />
+  <DelerStreg src="/assets/grafik/divider_red.svg" width="250" />
   <FooterMedlem />
 </Layout>

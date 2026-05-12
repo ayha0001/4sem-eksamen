@@ -16,7 +16,7 @@ const { tekst1, nummer, tekst2, underline = false } = Astro.props;
   <p class='text-m-p-big md:text-p-big mb-2 min-h-12'>{tekst1}</p>
   <div class='relative w-fit self-center'>
     <!-- formatere tal til dansk format -->
-    <p class='font-visuals text-m-visuals2 md:text-visuals2'>{nummer.toLocaleString("da-DK")}</p>
+    <p class='font-visuals text-m-visuals md:text-visuals'>{nummer.toLocaleString("da-DK")}</p>
     <!-- vis kun hvis underline er true -->
     {underline && <img src='/assets/grafik/deler-taeller.svg' alt='' class='absolute -bottom-1 left-0 w-full' />}
   </div>

@@ -1,0 +1,29 @@
+---
+import IkonKort from "../afsnit/IkonKort.astro";
+import TekstCenter from "../afsnit/TekstCenter.astro";
+---
+
+<section>
+  <TekstCenter
+    titel='Mission'
+    tekst='Vi arbejder for at være en af verdens mest gennemsigtige NGO’er, hvor du altid kan se, hvem du hjælper.
+Vi deler kvitteringer og indblik i vores arbejde på sociale medier, så din støtte er synlig og konkret.
+Fra uddeling af soveposer til julehjælp viser vi præcis, hvordan dine donationer gør en forskel.'
+  />
+  <div class='container mx-auto grid grid-cols-1 gap-6 px-4 md:grid-cols-3'>
+    <IkonKort
+      billede='/assets/grafik/hjerte-fyld-rød.svg'
+      titel='Ligeværdighed'
+      tekst='Vi møder mennesker med respekt.
+Vi deler historier og bryder stigma.'
+    />
+    <IkonKort
+      billede='/assets/grafik/hjerte-fyld-rød.svg'
+      titel='Gennemsigtighed'
+      tekst='Vi viser, hvor dine donationer ender.
+Fuld gennemsigtighed skaber tillid.'
+    />
+    <IkonKort billede='/assets/grafik/hjerte-fyld-rød.svg' titel='Tryghed' tekst='Vi hjælper hver uge på gaden.
+Relationer gør vores hjælp bedre.' />
+  </div>
+</section>
