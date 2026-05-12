@@ -1,0 +1,184 @@
+---
+import Link from "../generelt/Link.astro";
+import Knap from "../generelt/Knap.astro";
+
+const organisationsLinks = [
+  { label: "Projekter", href: "#" },
+  { label: "Om os", href: "/hvem-er-vi" },
+  { label: "Bliv frivillig", href: "/bliv-frivillig" },
+  { label: "Bliv partner", href: "/partnere" },
+  { label: "Doner", href: "/stoet-os" },
+  { label: "Kontakt os", href: "/kontakt-os" },
+];
+
+const legalLinks = [
+  { label: "Privacy & Policy", href: "#" },
+  { label: "Betalingspolitik", href: "#" },
+  { label: "Klage", href: "#" },
+  { label: "Handelsbetingelser", href: "#" },
+  { label: "Cookiepolitik", href: "#" },
+];
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "#",
+    icon: "/assets/grafik/some-ikon/Facebook-hvid.svg",
+  },
+  {
+    label: "Instagram",
+    href: "#",
+    icon: "/assets/grafik/some-ikon/Instagram-hvid.svg",
+  },
+  {
+    label: "TikTok",
+    href: "#",
+    icon: "/assets/grafik/some-ikon/TikTok-hvid.svg",
+  },
+  {
+    label: "LinkedIn",
+    href: "#",
+    icon: "/assets/grafik/some-ikon/Linkedin-hvid.svg",
+  },
+];
+---
+
+<footer class="bg-primary text-background1 relative overflow-hidden">
+  <img
+    src="/assets/grafik/logo-footer.svg"
+    alt=""
+    class="pointer-events-none absolute top-1/2 left-1/2 hidden w-[350px] -translate-x-1/2 -translate-y-1/2 opacity-10 lg:block"
+  />
+
+  <div class="relative mx-auto max-w-[1400px] pt-16 pb-7 md:px-10 lg:px-14">
+    <div
+      class="grid justify-between gap-10 lg:grid-cols-[0.8fr_1.2fr_0.8fr_1.5fr_1.5fr]"
+    >
+      <img
+        src="/assets/grafik/logo-footer.svg"
+        alt="Hjælp Din Næste"
+        class="h-auto w-36"
+      />
+      <section class="space-y-6">
+        <div class="text-p-big space-y-4 leading-relaxed">
+          <p class="font-body text-p-big font-medium">Hjælp Din Næste</p>
+          <p class="text-p-small">
+            Badstuestræde 13,<br />
+            1211, København
+          </p>
+          <p class="text-p-small">
+            CVR: 41384417<br />
+            Reg-nr: 0111<br />
+            Konto-nr: 6293992221<br />
+            Mobilepay-nr: 302230
+          </p>
+          <p class="text-p-small">
+            Telefon: +45 81 11 11 92<br />
+            Email: hdn@hjaelpdinnaeste.org
+          </p>
+        </div>
+      </section>
+
+      <nav aria-label="Organisationen">
+        <p class="font-body text-p-big mb-4 font-medium">Organisationen</p>
+        <div class="flex flex-col gap-2">
+          {
+            organisationsLinks.map((link) => (
+              <Link href={link.href} variant="footerlink" size="small">
+                {link.label}
+              </Link>
+            ))
+          }
+        </div>
+      </nav>
+
+      <section class="space-y-8">
+        <div class="space-y-4">
+          <p class="font-body text-p-big font-medium">Tilmeld Nyhedsbrev</p>
+          <p class="text-p-small max-w-md leading-relaxed">
+            Følg med i vores arbejde og opdateringer ved at tilmelde dig vores
+            nyhedsbrev
+          </p>
+          <form
+            class="flex max-w-md flex-col gap-3 sm:flex-row"
+            action="#"
+            method="post"
+          >
+            <label for="newsletter-email" class="sr-only">E-mail</label>
+            <input
+              id="newsletter-email"
+              name="email"
+              type="email"
+              placeholder="E-mail"
+              class="border-background1/80 text-p-small text-background1 placeholder:text-background1/70 focus:ring-background1/50 h-10 w-full rounded-md border bg-transparent px-3 focus:ring-2 focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="bg-background1 text-p-small text-primary hover:bg-accent-pink hover:text-primary h-10 rounded-md px-4 font-semibold duration-200"
+            >
+              Tilmeld
+            </button>
+          </form>
+        </div>
+
+        <div class="space-y-3">
+          <p class="font-body text-p-big font-medium">
+            Følg os på sociale medier
+          </p>
+          <div class="flex flex-wrap gap-3">
+            {
+              socialLinks.map((social) => (
+                <a
+                  href={social.href}
+                  aria-label={social.label}
+                  class="hover:bg-background1/10 flex h-8 w-8 items-center justify-center rounded-full bg-transparent transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  <img src={social.icon} alt="" class="h-8 w-8" />
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="font-body text-title2 font-regular leading-none">Støt os</h2>
+        <p class="text-p-small max-w-sm pt-4 leading-relaxed">
+          Vil du bidrage til at vi kan hjælpe endnu flere udsatte? Støt os på
+          knappen her
+        </p>
+        <div class="mt-2 flex flex-col gap-4">
+          <Link href="/vaernemidler" variant="footerlink" size="small"
+            >Værnemidler</Link
+          >
+          <Link href="/testamente" variant="footerlink" size="small"
+            >Testamente</Link
+          >
+          <Knap variant="secondary3">STØT</Knap>
+        </div>
+      </section>
+    </div>
+    <div class="border-background1/70 mt-14 border-t pt-6">
+      <div
+        class="text-p-big flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+      >
+        <p>© Hjælp Din Næste 2026</p>
+        <nav
+          aria-label="Juridiske links"
+          class="flex flex-wrap gap-x-7 gap-y-2"
+        >
+          {
+            legalLinks.map((link) => (
+              <a
+                href={link.href}
+                class="transition-opacity duration-200 hover:opacity-75"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
