@@ -1,39 +1,23 @@
 ---
 interface Props {
-  title: string;
-  image?: string;
-    background?: string;
-  color: string;
+  titel: string;
+  billede?: string;
+  baggrund?: string;
+  farve: string;
 }
 
-const { title, image, background, color } = Astro.props;
+const { titel, billede, baggrund, farve } = Astro.props;
 ---
 
 {/* Hvis der ikke er et billede, bruges baggrundsklassen i stedet. */}
-<section
-  class={`relative w-full md:h-44 ${
-    !image ? background : ""
-  }`}
->
-  {/* Render kun <img>, når der faktisk er sendt en image-prop ind. */}
-  {
-    image && (
-      <img
-        src={image}
-        alt={title}
-        class="h-full w-full object-cover"
-      />
-    )
-  }
+<section class={`relative w-full md:h-44 ${!billede ? baggrund : ""}`}>
+  {/* Render kun <img>, når der faktisk er sendt en billede-prop ind. */}
+  {billede && <img src={billede} alt={titel} class='h-full w-full object-cover' />}
 
-  <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-    <h1 class={`font-h1 text-m-title1 md:text-title1 ${color}`}>
-      {title}
+  <div class='absolute inset-0 z-10 flex flex-col items-center justify-center'>
+    <h1 class={`font-h1 text-m-title1 md:text-title1 ${farve}`}>
+      {titel}
     </h1>
- <img
-  src="/assets/grafik/deler-title.svg"
-  alt="Dekorativ streg under overskrift"
-  class="mt-1 w-150"
-/>
+    <img src='/assets/grafik/deler-title.svg' alt='Dekorativ streg under overskrift' class='mt-1 w-150' />
   </div>
 </section>
