@@ -27,8 +27,7 @@ const baseStyling = isTextlink ? textlinkStyling : buttonStyling;
 
 // Varianter
 const variantClasses = {
-  primary:
-    "bg-primary border-primary text-background1 cursor-pointer",
+  primary: "bg-primary border-primary text-background1 cursor-pointer",
 
   primary2:
     "bg-primary border-primary text-background1 hover:bg-white hover:text-primary hover:border-primary cursor-pointer",
@@ -106,39 +105,40 @@ const textShift = textShiftClasses[size];
 >
   <!-- Teksten i knappen/linket -->
   <span
-    class:list={[
-      "transition-transform duration-500",
-      isPrimary && textShift,
-    ]}
+    class:list={["transition-transform duration-500", isPrimary && textShift]}
   >
     <slot />
   </span>
 
   <!-- Hjerte vises kun på primary-knappen -->
-  {isPrimary && (
-    <img
-      src="/assets/grafik/hjerte-fyld-hvid.svg"
-      alt=""
-      class:list={[
-        iconSize,
-        heartPosition,
-        "absolute top-1/2 -translate-y-1/2 translate-x-10 opacity-0 transition-all duration-500 pointer-events-none group-hover:translate-x-0 group-hover:opacity-100",
-      ]}
-    />
-  )}
+  {
+    isPrimary && (
+      <img
+        src="/assets/grafik/hjerte-fyld-hvid.svg"
+        alt=""
+        class:list={[
+          iconSize,
+          heartPosition,
+          "pointer-events-none absolute top-1/2 translate-x-10 -translate-y-1/2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100",
+        ]}
+      />
+    )
+  }
 
   <!-- Ikoner til andre varianter end primary -->
-  {!isPrimary && icon && (
-    <>
-      <img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]} />
+  {
+    !isPrimary && icon && (
+      <>
+        <img src={icon} alt="" class:list={[iconSize, "group-hover:hidden"]} />
 
-      {iconHover && (
-        <img
-          src={iconHover}
-          alt=""
-          class:list={[iconSize, "hidden group-hover:block"]}
-        />
-      )}
-    </>
-  )}
+        {iconHover && (
+          <img
+            src={iconHover}
+            alt=""
+            class:list={[iconSize, "hidden group-hover:block"]}
+          />
+        )}
+      </>
+    )
+  }
 </button>

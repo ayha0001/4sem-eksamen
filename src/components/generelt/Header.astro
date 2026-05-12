@@ -1,0 +1,92 @@
+---
+import Knap from "./Knap.astro";
+import Link from "./Link.astro";
+
+const {} = Astro.props;
+---
+
+<header
+  class="bg-background1 flex w-full items-center justify-between px-6 py-4"
+>
+  <div class="inline-flex flex-shrink-0 items-center gap-4 pr-50">
+    <img src="/assets/grafik/logo_hænder.svg" alt="Logo" class="h-10" />
+    <span
+      class="font-wordmark text-primary text-[36px] font-semibold text-nowrap"
+    >
+      HJÆLP DiN NÆSTE
+    </span>
+  </div>
+  <nav class="flex w-full items-center justify-between">
+    <div class="group relative">
+      <Link href="/" variant="headerlink-dropdown" size="medium">Projekter</Link
+      >
+      <div
+        class="fixed top-[100%] left-0 z-50 hidden h-[200px] w-screen flex-row items-start bg-white px-24 py-8 shadow-lg transition-all group-hover:flex"
+      >
+        <!-- Indhold til megamenuen for Projekter -->
+        <div class="flex w-1/3 flex-col gap-2">
+          <a
+            href="/uddelinger"
+            class="text-secondary hover:text-primary font-medium">Uddelinger</a
+          >
+          <a
+            href="/baeredygtighed"
+            class="text-secondary hover:text-primary font-medium"
+            >Bæredygtighed</a
+          >
+          <a
+            href="/nyt-hjem"
+            class="text-secondary hover:text-primary font-medium">Et nyt hjem</a
+          >
+          <a
+            href="/julegaveindsamling"
+            class="text-secondary hover:text-primary font-medium">Julegaver</a
+          >
+        </div>
+        <div class="flex flex-1 items-center justify-center">
+          <!-- Eksempel på billede eller andet indhold -->
+          <img
+            src="/assets/img/bento-grid/projekter.jpg"
+            alt="Projekter"
+            class="h-32 w-full max-w-xs rounded-lg object-cover"
+          />
+        </div>
+      </div>
+    </div>
+    <script is:inline type="module">
+      const parent = document.getElementById("projekter-dropdown-parent");
+      const link = document.getElementById("projekter-dropdown-link");
+      const menu = document.getElementById("projekter-megamenu");
+      if (parent && link && menu) {
+        let over = false;
+        function showMenu() {
+          menu.classList.remove("hidden");
+        }
+        function hideMenu() {
+          menu.classList.add("hidden");
+        }
+        link.addEventListener("mouseenter", showMenu);
+        link.addEventListener("focus", showMenu);
+        link.addEventListener("mouseleave", () =>
+          setTimeout(() => {
+            if (!over) hideMenu();
+          }, 100),
+        );
+        menu.addEventListener("mouseenter", () => {
+          over = true;
+          showMenu();
+        });
+        menu.addEventListener("mouseleave", () => {
+          over = false;
+          hideMenu();
+        });
+      }
+    </script>
+    <Link href="/" variant="headerlink-dropdown" size="medium">Om os</Link>
+    <Link href="/" variant="headerlink" size="medium">Bliv frivilig</Link>
+    <Link href="/" variant="headerlink" size="medium">Bliv partner</Link>
+    <Link href="/" variant="headerlink-dropdown" size="medium">Doner</Link>
+    <Link href="/" variant="headerlink" size="medium">Kontakt os</Link>
+    <Knap href="/stot-nu" variant="primary" size="medium">STØT NU </Knap>
+  </nav>
+</header>
