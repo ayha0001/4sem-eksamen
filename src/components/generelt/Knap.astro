@@ -10,21 +10,28 @@ type ButtonVariant =
 type ButtonSize = "default" | "large" | "medium" | "small";
 
 interface Props {
+  href?: string;
+  target?: string;
+  rel?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
   icon?: string | null;
   iconHover?: string | null;
-  type?: "button" | "submit" | "reset";
 }
 
 const {
+  href = "#",
+  target = "_self",
+  rel,
   variant = "primary",
   size = "medium",
   icon = null,
   iconHover = null,
-  type = "button",
   ...attrs
 } = Astro.props as Props & Record<string, unknown>;
+
+const linkRel =
+  rel ?? (target === "_blank" ? "noopener noreferrer" : undefined);
 
 // Tjekker om varianten er et tekstlink
 const isTextlink = variant === "textlink";
@@ -111,18 +118,22 @@ const textShiftClasses = {
 const iconSize = iconSizeClasses[size];
 const heartPosition = heartPositionClasses[size];
 const textShift = textShiftClasses[size];
+
+const linkClasses = [
+  baseStyling,
+  variantClasses[variant],
+  sizeClasses,
+  "group",
+  attrs.class,
+];
 ---
 
-<button
-  type={type}
+<a
+  href={href}
+  target={target}
+  rel={linkRel}
   {...attrs}
-  class:list={[
-    baseStyling,
-    variantClasses[variant],
-    sizeClasses,
-    "group",
-    attrs.class,
-  ]}
+  class:list={linkClasses}
 >
   <!-- Teksten i knappen/linket -->
   <span
@@ -162,4 +173,4 @@ const textShift = textShiftClasses[size];
       </>
     )
   }
-</button>
+</a>
