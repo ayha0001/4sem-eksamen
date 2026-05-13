@@ -1,0 +1,66 @@
+---
+import Link from "../generelt/Link.astro";
+import Deler from "../generelt/Deler.astro";
+
+interface Props {
+  title: string;
+  text: string;
+  bg: string;
+  buttonText: string;
+  buttonLink: string;
+  image?: string;
+}
+
+const {
+  title,
+  text,
+  buttonText,
+  buttonLink,
+bg = "/assets/grafik/citat-bg-brown.svg",
+  image = "/assets/grafik/hus-hvid-hjerte.svg",
+} = Astro.props;
+---
+
+<section
+  class="relative bg-no-repeat w-full h-auto bg-[url('/assets/grafik/citat-bg-pink.svg')]"
+>
+
+  <!-- Content wrapper -->
+  <div class="relative mx-auto max-w-230 px-4 py-20">
+
+    <div class="grid grid-cols-1 items-center gap-5 lg:grid-cols-[2fr_3fr]">
+
+      <!-- Illustration -->
+      <div class="flex justify-center">
+        <img
+          src={image}
+          alt=""
+          class="w-28 object-contain lg:w-44"
+        />
+      </div>
+
+      <!-- Tekst -->
+      <div>
+        <h2 class="font-body font-semibold text-m-title2 leading-none text-secondary lg:text-title2">
+          {title}
+        </h2>
+
+        <p class="font-body mt-4 text-m-p-big leading-relaxed text-secondary lg:text-p-big">
+          {text}
+        </p>
+
+        <div class="mt-6">
+          <Link
+            href={buttonLink}
+            variant="secondary"
+            size="small"
+          >
+            {buttonText}
+          </Link>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
