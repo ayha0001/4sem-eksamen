@@ -7,27 +7,23 @@ import DelerStreg from "../components/generelt/DelerStreg.astro";
 import TekstBillede from "../components/afsnit/TekstBillede.astro";
 ---
 
-<Layout pagetitle="Testamente">
-  <HeroLille
-    title="Testamente"
-    background="bg-background1"
-    color="text-primary"
-  />
+<Layout pagetitle='Testamente'>
+  <HeroLille titel='Testamente' baggrund='bg-background1' farve='text-primary' />
 
   <TekstBillede
-    title="Giv værdi fra efterlivet"
+    title='Giv værdi fra efterlivet'
     paragraphs={[
       "Hos Hjælp Din Næste tror vi på at gode intentioner ikke kender nogen grænser, derfor kan du testamentere til fordel for os og være med til at hæve levestandard samt sikre et værdigt liv for samfundets mest udsatte.",
       "Det er gratis og gør mere, end du aner.",
       "For at gøre det nemt og enkelt at oprette et testamente med donation af arv, har vi indgået et samarbejde med virksomheden Dokument 24.",
       "Hos Dokument 24 kan du oprette dit testamente ved at svare på 12-15 spørgsmål online. Når spørgsmålene er besvaret, får du straks et skræddersyet testamente tilsendt pr. e-mail.",
     ]}
-    image="/assets/img/testa-1.webp"
-    imageAlt="Smil og omsorg på Vesterbro"
-    caption="Smil og omsorg på Vesterbro"
+    image='/assets/img/testa-1.webp'
+    imageAlt='Smil og omsorg på Vesterbro'
+    caption='Smil og omsorg på Vesterbro'
   />
 
-  <DelerStreg src="/assets/grafik/divider-grey.svg" width="950" />
+  <DelerStreg src='/assets/grafik/divider-grey.svg' width='950' />
   <KontaktHjaelp />
   <FooterMedlem />
 </Layout>
