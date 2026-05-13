@@ -5,35 +5,45 @@ interface Props {
   image: string;
   imageAlt: string;
   caption?: string;
+  imageClass?: string;
+  figureClass?: string;
 }
 
-const { title, paragraphs, image, imageAlt, caption } = Astro.props;
+const {
+  title,
+  paragraphs,
+  image,
+  imageAlt,
+  caption,
+  imageClass,
+  figureClass,
+} = Astro.props;
 ---
 
-<section class="px-6 py-12 lg:px-12">
-  <div class="mx-auto grid max-w-5xl grid-cols-1 gap-10 lg:grid-cols-2 items-start">
+<section class="mx-auto max-w-230 gap-3 px-4 py-10">
+  <div class="mx-auto grid max-w-5xl grid-cols-1 gap-10 items-start lg:grid-cols-2">
     
     <div>
-      <h2 class="font-body font-bold text-m-title2 lg:text-title2 text-secondary mb-6">
+      <h2 class="font-body mb-2 text-m-title2 font-bold text-secondary lg:text-title2">
         {title}
       </h2>
 
-      <div class="space-y-5 font-body text-m-p-big lg:text-p-big text-secondary leading-relaxed">
+      <div class="font-body space-y-5 text-m-p-big leading-relaxed text-secondary lg:text-p-big">
         {paragraphs.map((paragraph) => (
           <p>{paragraph}</p>
         ))}
       </div>
     </div>
 
-    <figure class="w-full">
+    <figure class={figureClass || "w-full"}>
       <img
         src={image}
         alt={imageAlt}
-        class="w-full rounded-md object-cover"
+        class={`${imageClass || "w-full"} rounded-md object-cover`}
       />
 
       {caption && (
-        <figcaption class="mt-2 text-right font-body text-m-p-small lg:text-p-small text-secondary">
+        <figcaption class="font-body mt-2 text-right text-m-p-small text-secondary lg:text-p-small">
           {caption}
         </figcaption>
       )}

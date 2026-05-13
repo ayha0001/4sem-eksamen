@@ -1,14 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroLille from "../components/generelt/HeroLille.astro";
+import AnsatSektion from "../components/om-os/AnsatSektion.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 ---
 
-<Layout pagetitle="Hvem er vi?">
-  <HeroLille
-    titel="hvem er vi?"
-    billede="/assets/img/hvemervi-hero.webp"
-    farve="text-background1"
-  />
+
+<Layout pagetitle='Hvem er vi?'>
+  <HeroLille titel='Hvem er vi?' billede='/assets/hej.jpeg' farve='text-background1' />
+  <AnsatSektion />
   <FooterMedlem />
 </Layout>

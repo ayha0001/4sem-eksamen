@@ -1,0 +1,22 @@
+---
+//@ts-check
+import AnsatKort from "./AnsatKort.astro";
+
+const url = "https://zshjtuvejhijdilwpzqa.supabase.co/rest/v1/holdet?select=*";
+const key =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzaGp0dXZlamhpamRpbHdwenFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDM5MzcsImV4cCI6MjA5NDIxOTkzN30.K5DSv_K9Q_b_tWsWBH7rZ_zWF_ycq8M4HGwAk_X8oOI";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+// gør sådan vi kan se det i vores console og om dataene er hentet korrekt
+const data = await fetch(url, options).then((res) => res.json());
+console.log(data);
+---
+
+<section class='container mx-auto mt-12 grid grid-cols-2 gap-5 px-4 md:grid-cols-3'>
+  {data.map((person: any) => <AnsatKort person={person} />)}
+</section>
