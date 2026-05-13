@@ -1,0 +1,120 @@
+---
+/* props til componentet */
+const {
+  image,
+  title = "Partner",
+  text,
+  link,
+  linkText = "Besøg hjemmeside",
+  imageAlt = title,
+  class: extraClass = "",
+} = Astro.props;
+
+/* laver et unikt id ud fra titlen */
+const id = `partner-${title.toLowerCase().replaceAll(" ", "-")}`;
+---
+
+<!-- selve kortet -->
+<article
+  class={`partner-card w-full overflow-hidden rounded-sm bg-background2 p-6 shadow-sm transition duration-300 hover:shadow-md ${extraClass}`}
+>
+  <!-- billede -->
+  <div class="bg-background1 mb-8 overflow-hidden">
+    <img
+      src={image}
+      alt={imageAlt}
+      class="h-56 w-full object-contain p-4 transition duration-500 hover:scale-105"
+    />
+  </div>
+
+  <!-- knap som åbner dropdown -->
+  <button
+    type="button"
+    class="partner-toggle text-secondary flex w-full cursor-pointer items-center justify-between gap-6 text-left"
+    aria-expanded="false"
+    aria-controls={id}
+  >
+    <!-- titel -->
+    <h3 class="font-body text-m-title3 lg:text-title3 font-semibold">
+      {title}
+    </h3>
+
+    <!-- pil ikon -->
+    <span class="partner-icon text-2xl transition-transform duration-500">
+      ▾
+    </span>
+  </button>
+
+  <!-- dropdown indhold -->
+  <div
+    id={id}
+    class="partner-content max-h-0 overflow-hidden opacity-0 transition-all duration-700 ease-in-out"
+  >
+    <!-- indhold inde i dropdown -->
+    <div class="font-body text-secondary space-y-6 pt-6">
+      <!-- tekst -->
+      <p class="text-m-p-big lg:text-p-big leading-relaxed">
+        {text}
+      </p>
+
+      <!-- link vises kun hvis der findes et link -->
+      {
+        link && (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-m-p-big lg:text-p-big hover:text-primary inline-flex items-center gap-2 transition-colors duration-300"
+          >
+            {linkText}
+
+            <!-- pil -->
+            <span class="font-semibold">➜</span>
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<script>
+  /* finder alle partner cards */
+  document.querySelectorAll(".partner-card").forEach((card) => {
+    /* finder knap, dropdown og ikon inde i hvert card */
+    const button = card.querySelector(".partner-toggle") as HTMLElement;
+    const content = card.querySelector(".partner-content") as HTMLElement;
+    const icon = card.querySelector(".partner-icon") as HTMLElement;
+
+    /* når man klikker på knappen */
+    button?.addEventListener("click", () => {
+      /* checker om dropdown allerede er åben */
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+
+      /* opdaterer accessibility attribute */
+      button.setAttribute("aria-expanded", String(!isOpen));
+
+      /* hvis dropdown er åben */
+      if (isOpen) {
+        /* lukker dropdown */
+        content.style.maxHeight = "0px";
+
+        /* gør indhold gennemsigtigt */
+        content.classList.remove("opacity-100");
+        content.classList.add("opacity-0");
+
+        /* roterer pil tilbage */
+        icon.classList.remove("rotate-180");
+      } else {
+        /* åbner dropdown til indholdets fulde højde */
+        content.style.maxHeight = content.scrollHeight + "px";
+
+        /* gør indhold synligt */
+        content.classList.remove("opacity-0");
+        content.classList.add("opacity-100");
+
+        /* roterer pil */
+        icon.classList.add("rotate-180");
+      }
+    });
+  });
+</script>
