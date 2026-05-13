@@ -3,10 +3,22 @@ import Layout from "../layouts/Layout.astro";
 import HeroLille from "../components/generelt/HeroLille.astro";
 import HjaelpSektion from "../components/nyt-hjem/HjaelpSektion.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import SogHjaelp from "../components/nyt-hjem/SogHjaelp.astro";
+import Deler from "../components/generelt/Deler.astro";
 ---
 
 <Layout pagetitle='Nyt Hjem'>
   <HeroLille titel='Nyt Hjem' billede='/assets/hej.jpeg' farve='text-background1' />
   <HjaelpSektion />
+ 
+  <SogHjaelp
+  title="Søger du hjælp som tidligere hjemløs?"
+  text="Send en mail til hdn@hjaelpdinnaeste.org med din kontaktperson fra kommunen, bosted eller lignende og en beskrivelse af din situation samt hvad du mangler."
+  buttonText="Kontakt os"
+  buttonLink="/kontakt"
+  image="/assets/grafik/hus-hvid-hjerte.svg"
+/>
+ 
+<Deler ws='m' />
   <FooterMedlem />
 </Layout>
