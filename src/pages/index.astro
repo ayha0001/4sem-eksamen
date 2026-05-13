@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import TekstCenter from "../components/afsnit/TekstCenter.astro";
 import TaellerSektion from "../components/forside/TaellerSektion.astro";
 import MissionSektion from "../components/forside/MissionSektion.astro";
 import DelerStreg from "../components/generelt/DelerStreg.astro";
@@ -7,10 +8,21 @@ import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 import DelerCitat from "../components/forside/DelerCitat.astro";
 ---
 
-<Layout pagetitle="Forside">
+<Layout pagetitle='Forside'>
+  <TekstCenter
+    logo='/assets/grafik/hænder-logo.svg'
+    titel='Hvad har vi opnået i 2025?'
+    tekst='Som medlem deltager du aktivt i vores kamp for at hjælpe gadens folk. Du sørger for at folk på gaden får varmt tøj, værnemidler, soveposer og andre redskaber mod kulden. Du bliver en hjemløseven og en del af vores vision for at hæve levestandarden og livskvaliteten for alle dem der lever på gaden.'
+  />
   <TaellerSektion />
   <DelerCitat />
+  <TekstCenter
+    titel='Mission'
+    tekst='Vi arbejder for at være en af verdens mest gennemsigtige NGO’er, hvor du altid kan se, hvem du hjælper.
+Vi deler kvitteringer og indblik i vores arbejde på sociale medier, så din støtte er synlig og konkret.
+Fra uddeling af soveposer til julehjælp viser vi præcis, hvordan dine donationer gør en forskel.'
+  />
   <MissionSektion />
-  <DelerStreg src="/assets/grafik/divider_red.svg" width="250" />
+  <DelerStreg src='/assets/grafik/divider_red.svg' width='250' />
   <FooterMedlem />
 </Layout>

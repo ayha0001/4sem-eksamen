@@ -21,7 +21,7 @@
   --ws-xs: 20px;
 }
 
-@theme inline {
+@theme {
   --font-h1: "Anton", sans-serif;
   --font-body: "Quicksand", sans-serif;
   --font-visuals: "Permanent Marker", cursive;
