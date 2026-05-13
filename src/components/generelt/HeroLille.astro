@@ -4,9 +4,10 @@ interface Props {
   billede?: string;
   baggrund?: string;
   farve: string;
+  billedePlacering?: string; // fx "50% 0%" (top), "50% 50%" (center), "50% 100%" (bottom)
 }
 
-const { titel, billede, baggrund, farve } = Astro.props;
+const { titel, billede, baggrund, farve, billedePlacering = "50% 50%" } = Astro.props;
 ---
 
 {/* Hvis der ikke er et billede, bruges baggrundsklassen i stedet. */}
@@ -19,19 +20,19 @@ const { titel, billede, baggrund, farve } = Astro.props;
       <img
         src={billede}
         alt={titel}
+        style={{ objectPosition: billedePlacering }}
         class="absolute inset-0 h-full w-full object-cover"
       />
+        <div class="absolute inset-0 z-10 bg-black/50"></div>
     )
   }
 
-  {/* mørkt overlay */}
-  <div class="absolute inset-0 z-10 bg-black/50"></div>
 
   <div
     class="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center"
   >
     <h1
-      class={`font-h1 capitalize text-m-title1 leading-none md:text-title1 lg:text-title1 ${farve}`}
+      class={`font-h1 uppercase text-m-title1 leading-none md:text-title1 lg:text-title1 ${farve}`}
     >
       {titel}
     </h1>
