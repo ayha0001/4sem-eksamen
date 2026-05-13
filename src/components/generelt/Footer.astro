@@ -44,20 +44,30 @@ const socialLinks = [
 ---
 
 <footer class="bg-primary text-background1 relative overflow-hidden">
+  <!-- Centralt vandmærke (kun desktop) -->
   <img
     src="/assets/grafik/logo-footer.svg"
     alt=""
-    class="pointer-events-none absolute top-1/2 left-1/2 hidden w-[350px] -translate-x-1/2 -translate-y-1/2 opacity-10 lg:block"
+    class="pointer-events-none absolute top-1/2 left-1/2 w-[300px] -translate-x-1/2 -translate-y-1/2 opacity-10 min-[1000px]:w-[350px]"
+  />
+  <!-- Absolut logo i højre side på mobil -->
+  <img
+    src="/assets/grafik/logo-footer.svg"
+    alt="Hjælp Din Næste"
+    class="absolute top-10 right-10 z-10 block h-25 w-25 min-[1000px]:hidden"
   />
 
-  <div class="relative mx-auto max-w-[1400px] pt-16 pb-7 md:px-10 lg:px-14">
+  <div
+    class="relative mx-auto max-w-[1400px] px-4 pt-12 pb-7 min-[800px]:px-10 min-[1000px]:px-14"
+  >
     <div
-      class="grid justify-between gap-10 lg:grid-cols-[0.8fr_1.2fr_0.8fr_1.5fr_1.5fr]"
+      class="grid justify-between gap-10 min-[800px]:grid-cols-[1fr_1fr] min-[1000px]:grid-cols-[0.8fr_1.2fr_0.8fr_1.5fr_1.5fr]"
     >
+      <!-- Desktop logo uden absolute-position -->
       <img
         src="/assets/grafik/logo-footer.svg"
         alt="Hjælp Din Næste"
-        class="h-auto w-36"
+        class="hidden h-auto w-36 min-[1000px]:block"
       />
       <section class="space-y-6">
         <div class="text-p-big space-y-4 leading-relaxed">
@@ -73,8 +83,14 @@ const socialLinks = [
             Mobilepay-nr: 302230
           </p>
           <p class="text-p-small">
-            Telefon: +45 81 11 11 92<br />
-            Email: hdn@hjaelpdinnaeste.org
+            Telefon: <a
+              href="tel:+4581111192"
+              class="text-background1 underline">+45 81 11 11 92</a
+            ><br />
+            Email: <a
+              href="mailto:hdn@hjaelpdinnaeste.org"
+              class="text-background1 underline">hdn@hjaelpdinnaeste.org</a
+            >
           </p>
         </div>
       </section>
@@ -101,7 +117,7 @@ const socialLinks = [
           </p>
           <form
             id="newsletter-form"
-            class="flex max-w-md flex-col gap-3 sm:flex-row"
+            class="flex max-w-md flex-col gap-3 min-[1000px]:flex-row"
             action="#"
             method="post"
           >
@@ -167,7 +183,7 @@ const socialLinks = [
     </div>
     <div class="border-background1/70 mt-14 border-t pt-6">
       <div
-        class="text-p-big flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+        class="text-p-big flex flex-col gap-4 min-[1000px]:flex-row min-[1000px]:items-center min-[1000px]:justify-between"
       >
         <p>© Hjælp Din Næste 2026</p>
         <nav

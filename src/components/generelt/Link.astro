@@ -10,9 +10,8 @@ interface Props {
     | "textlink"
     | "headerlink"
     | "headerlink-dropdown"
-    | "headerlink_dropdown"
     | "footerlink";
-      "class"?: string;
+  class?: string;
   size?: "default" | "large" | "medium" | "small";
   icon?: string | null;
   iconHover?: string | null;
@@ -34,8 +33,7 @@ const isTextlink =
   variant === "textlink" ||
   variant === "headerlink" ||
   variant === "footerlink";
-const isHeaderlinkDropdown =
-  variant === "headerlink-dropdown" || variant === "headerlink_dropdown";
+const isHeaderlinkDropdown = variant === "headerlink-dropdown";
 
 // Base styling til almindelige links/knapper
 const linkStyling =
@@ -47,11 +45,11 @@ const textlinkStyling =
 
 // Base styling kun til headerlink
 const headerlinkStyling =
-  "inline-flex items-center gap-2 font-body font-normal transition-all duration-300";
+  "inline-flex items-center gap-2 font-body font-normal transition-all duration-300 text-nowrap";
 
 // Vælger base styling afhængigt af variant
 const baseStyling = isHeaderlinkDropdown
-  ? "inline-flex items-center gap-2 font-body font-normal transition-all duration-300"
+  ? "inline-flex items-center gap-2 font-body font-normal transition-all duration-300 text-nowrap"
   : isTextlink
     ? variant === "textlink"
       ? textlinkStyling
@@ -81,8 +79,6 @@ const variantClasses = {
   headerlink: "border-none bg-transparent p-0 text-secondary hover:opacity-50",
   "headerlink-dropdown":
     "border-none bg-transparent p-0 text-secondary flex items-center gap-2 cursor-default", // Ingen opacity hover
-  headerlink_dropdown:
-    "border-none bg-transparent p-0 text-secondary flex items-center gap-2 cursor-default", // Alias uden opacity hover
 };
 
 /* Størrelser til almindelige links */
@@ -145,13 +141,13 @@ const iconSize = iconSizeClasses[size];
   rel={target === "_blank" ? "noopener noreferrer" : undefined}
   aria-disabled={isHeaderlinkDropdown ? "true" : undefined}
   {...attrs}
- class:list={[
-  baseStyling,
-  variantClasses[variant],
-  sizeClasses,
-  "group",
-  className
-]}
+  class:list={[
+    baseStyling,
+    variantClasses[variant],
+    sizeClasses,
+    "group",
+    className,
+  ]}
 >
   <!-- Link tekst -->
   <span
