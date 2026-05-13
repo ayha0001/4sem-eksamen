@@ -14,11 +14,6 @@
   --accent-brown: #3c0304;
   --background1: #f6f6f6;
   --background2: #fbfbfb;
-  --ws-xl: 200px;
-  --ws-l: 120px;
-  --ws-m: 75px;
-  --ws-s: 40px;
-  --ws-xs: 20px;
 }
 
 @theme {
@@ -51,11 +46,17 @@
   --text-m-p-small: 12px;
   --text-m-visuals: 40px;
 
-  --spacing-ws-xl: var(--ws-xl);
-  --spacing-ws-l: var(--ws-l);
-  --spacing-ws-m: var(--ws-m);
-  --spacing-ws-s: var(--ws-s);
-  --spacing-ws-xs: var(--ws-xs);
+  --spacing-ws-xl: 200px;
+  --spacing-ws-l: 120px;
+  --spacing-ws-m: 75px;
+  --spacing-ws-s: 40px;
+  --spacing-ws-xs: 20px;
+
+  --spacing-ws-m-xl: 100px;
+  --spacing-ws-m-l: 70px;
+  --spacing-ws-m-m: 30px;
+  --spacing-ws-m-s: 15px;
+  --spacing-ws-m-xs: 5px;
 }
 
 body {
