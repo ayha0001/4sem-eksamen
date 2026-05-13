@@ -5,12 +5,21 @@ import MissionSektion from "../components/forside/MissionSektion.astro";
 import DelerStreg from "../components/generelt/DelerStreg.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 import DelerCitat from "../components/forside/DelerCitat.astro";
+import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import Deler from "../components/generelt/Deler.astro";
 ---
 
 <Layout pagetitle="Forside">
+  <Deler ws="m" />
   <TaellerSektion />
+  <Deler ws="m" />
   <DelerCitat />
+  <Deler ws="m" />
   <MissionSektion />
-  <DelerStreg src="/assets/grafik/divider_red.svg" width="250" />
+  <Deler ws="m" />
+  <DelerStreg src="/assets/grafik/divider_red.svg" />
+  <Deler ws="m" />
+  <ProjektSektion columns={4} />
+  <Deler ws="m" />
   <FooterMedlem />
 </Layout>
