@@ -1,7 +1,10 @@
 ---
 //@ts-check
+// Importerer kort-komponenterne
 import AnsatKort from "./AnsatKort.astro";
+import AnsatJob from "./AnsatJob.astro";
 
+// Henter data fra Supabase-tabellen "holdet"
 const url = "https://zshjtuvejhijdilwpzqa.supabase.co/rest/v1/holdet?select=*";
 const key =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpzaGp0dXZlamhpamRpbHdwenFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDM5MzcsImV4cCI6MjA5NDIxOTkzN30.K5DSv_K9Q_b_tWsWBH7rZ_zWF_ycq8M4HGwAk_X8oOI";
@@ -15,8 +18,41 @@ const options = {
 // gør sådan vi kan se det i vores console og om dataene er hentet korrekt
 const data = await fetch(url, options).then((res) => res.json());
 console.log(data);
+
+// definerer de forskellige grupper og deres titler, så vi kan vise dem senere i vores UI
+const gruppeTitler: Record<number, string> = {
+  1: "Bestyrelsen",
+  2: "Ansatte",
+  3: "Frivillig-koordinatorer",
+  4: "Kernefrivillige",
+};
+
+// Samler personer i grupper ud fra deres gruppe-nummer
+const grupperedePersoner = data.reduce((acc: any, person: any) => {
+  const gruppe = person.gruppe;
+
+  if (!acc[gruppe]) {
+    acc[gruppe] = [];
+  }
+
+  acc[gruppe].push(person);
+
+  return acc;
+}, {});
 ---
 
-<section class='container mx-auto mt-12 grid grid-cols-2 gap-5 px-4 md:grid-cols-3'>
-  {data.map((person: any) => <AnsatKort person={person} />)}
-</section>
+{
+  Object.entries(grupperedePersoner).map(([gruppe, personer]: [string, any]) => (
+    <section class='mx-auto mb-4 max-w-230 px-4'>
+      <div class='grid grid-cols-2 gap-3 md:grid-cols-3'>
+        {/* Viser gruppens titel-kort */}
+        <AnsatJob title={gruppeTitler[Number(gruppe)]} />
+
+        {/* Viser alle personer i gruppen */}
+        {personer.map((person: any) => (
+          <AnsatKort person={person} />
+        ))}
+      </div>
+    </section>
+  ))
+}
