@@ -6,6 +6,7 @@ import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 import SogHjaelp from "../components/nyt-hjem/SogHjaelp.astro";
 import Deler from "../components/generelt/Deler.astro";
 import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import SliderKort from "../components/nyt-hjem/SliderKort.astro";
 ---
 
 <Layout pagetitle="Nyt Hjem">
@@ -34,18 +35,28 @@ import TekstBillede from "../components/afsnit/TekstBillede.astro";
 
   <Deler ws="m" />
 
-  <h2 class="font-body text-center text-m-title2 font-semibold text-secondary lg:text-title2">
-   Vi hjælper blandt andet med
+  <h2
+    class="font-body text-m-title2 text-secondary lg:text-title2 text-center font-semibold"
+  >
+    Vi hjælper blandt andet med
   </h2>
 
-  <Deler ws='s' />
+  <Deler ws="s" />
 
   <HjaelpSektion />
- 
-  <Deler ws="m" />
-  <SogHjaelp />
+
   <Deler ws="m" />
 
+  <SogHjaelp
+    title="Søger du hjælp som tidligere hjemløs?"
+    text="Send en mail til hdn@hjaelpdinnaeste.org med din kontaktperson fra kommunen, bosted eller lignende og en beskrivelse af din situation samt hvad du mangler."
+    buttonText="Kontakt os"
+    buttonLink="/kontakt"
+    image="/assets/grafik/hus-hvid-hjerte.svg"
+  />
 
+  <Deler ws="m" />
+  <SliderKort />
+  <Deler ws="m" />
   <FooterMedlem />
 </Layout>
