@@ -49,7 +49,7 @@ const {
     <div class={textClass || "order-2 lg:order-2"}>
       {
         headingTag === "h1" && (
-          <h1 class="font-body text-m-title1 lg:text-title1 font-bold">
+          <h1 class="font-body text-m-title1 lg:text-title1 leading-tight font-semibold">
             {title}
           </h1>
         )
@@ -57,7 +57,7 @@ const {
 
       {
         (!headingTag || headingTag === "h2") && (
-          <h2 class="font-body text-m-title2 lg:text-title2 font-bold">
+          <h2 class="font-body text-m-title2 lg:text-title2 mb-2 leading-tight font-semibold">
             {title}
           </h2>
         )
@@ -65,7 +65,7 @@ const {
 
       {
         headingTag === "h3" && (
-          <h3 class="font-body text-m-title3 lg:text-title3 font-bold">
+          <h3 class="font-body text-m-title3 lg:text-title3 leading-tight font-semibold">
             {title}
           </h3>
         )

@@ -2,12 +2,20 @@
 const { title } = Astro.props;
 ---
 
-<div class='bg-background2 flex flex-1 flex-col justify-end px-4 pt-4 pb-3 md:px-6 md:pb-6'>
-  <div class='flex flex-col items-start justify-end'>
-    <h2 class='text-secondary text-m-title2 md:text-title2 text-left leading-none font-bold'>
+<div
+  class="bg-background2 border-background1 flex flex-1 flex-col justify-end rounded-t rounded-b border px-4 pt-4 pb-3 shadow-sm md:px-6 md:pb-6"
+>
+  <div class="flex flex-col items-start justify-end">
+    <h2
+      class="text-secondary text-m-title2 md:text-title2 text-left leading-none font-bold"
+    >
       {title}
     </h2>
 
-    <img src='/assets/grafik/job-titel-streg-rød.svg' alt='' class='mt-2 ml-auto w-46' />
+    <img
+      src="/assets/grafik/job-titel-streg-rød.svg"
+      alt=""
+      class="mt-2 ml-auto w-46"
+    />
   </div>
 </div>
