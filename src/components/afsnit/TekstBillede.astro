@@ -7,29 +7,56 @@ interface Props {
   caption?: string;
   imageClass?: string;
   figureClass?: string;
+  headingTag?: "h1" | "h2" | "h3";
 }
 
-const { title, paragraphs, image, imageAlt, caption, imageClass, figureClass } =
-  Astro.props;
+const {
+  title,
+  paragraphs,
+  image,
+  imageAlt,
+  caption,
+  imageClass,
+  figureClass,
+  headingTag = "h2",
+} = Astro.props;
 ---
 
-<section class="mx-auto max-w-230 px-4 lg:px-4">
+<section class="mx-auto max-w-230 px-4">
   <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+
+    <!-- Tekst -->
     <div>
-      <h2
-        class="font-body text-m-title2 text-secondary lg:text-title2 font-bold"
-      >
-        {title}
-      </h2>
+
+      {
+        headingTag === "h1" ? (
+          <h1 class="font-body text-m-title1 text-secondary font-bold lg:text-title1">
+            {title}
+          </h1>
+        ) : headingTag === "h2" ? (
+          <h2 class="font-body text-m-title2 text-secondary font-bold lg:text-title2">
+            {title}
+          </h2>
+        ) : (
+          <h3 class="font-body text-m-title3 text-secondary font-bold lg:text-title3">
+            {title}
+          </h3>
+        )
+      }
 
       <div
-        class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+        class="font-body text-m-p-big text-secondary space-y-5 leading-relaxed lg:text-p-big"
       >
-        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        {paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
       </div>
+
     </div>
 
+    <!-- Billede -->
     <figure class={figureClass || "w-full"}>
+
       <img
         src={image}
         alt={imageAlt}
@@ -38,11 +65,13 @@ const { title, paragraphs, image, imageAlt, caption, imageClass, figureClass } =
 
       {
         caption && (
-          <figcaption class="font-body text-m-p-small text-secondary lg:text-p-small mt-2 text-right">
+          <figcaption class="font-body text-m-p-small text-secondary mt-2 text-right lg:text-p-small">
             {caption}
           </figcaption>
         )
       }
+
     </figure>
+
   </div>
 </section>
