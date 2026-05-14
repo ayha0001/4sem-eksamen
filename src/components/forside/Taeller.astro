@@ -4,22 +4,40 @@ interface Props {
   tekst1: string;
   nummer: number;
   tekst2: string;
+
   // underline er valgfri
   underline?: boolean;
+
+  // gør det muligt at ændre tekstfarve
+  textColor?: string;
 }
 
-// læser props og tjekker dem mod Props-typen, så vi er sikre på at de er gyldige
-const { tekst1, nummer, tekst2, underline = false } = Astro.props;
+// props
+const {
+  tekst1,
+  nummer,
+  tekst2,
+  underline = false,
+
+  // standard tekstfarve
+  textColor = "text-secondary",
+} = Astro.props;
 ---
 
-<div class="flex h-full flex-col text-center">
-  <p class="text-m-p-big md:text-p-big mb-2">{tekst1}</p>
+<!-- wrapper -->
+<div class={`flex h-full flex-col text-center ${textColor}`}>
+  <!-- øverste tekst -->
+  <p class="text-m-p-big md:text-p-big mb-2">
+    {tekst1}
+  </p>
+
+  <!-- tal -->
   <div class="relative w-fit self-center">
-    <!-- formatere tal til dansk format -->
     <p class="font-visuals text-m-visuals md:text-visuals">
       {nummer.toLocaleString("da-DK")}
     </p>
-    <!-- vis kun hvis underline er true -->
+
+    <!-- underline vises kun hvis underline = true -->
     {
       underline && (
         <img
@@ -30,5 +48,9 @@ const { tekst1, nummer, tekst2, underline = false } = Astro.props;
       )
     }
   </div>
-  <p class="text-m-p-big md:text-p-big mt-2">{tekst2}</p>
+
+  <!-- nederste tekst -->
+  <p class="text-m-p-big md:text-p-big mt-2">
+    {tekst2}
+  </p>
 </div>
