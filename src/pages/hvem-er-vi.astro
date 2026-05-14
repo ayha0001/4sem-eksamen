@@ -1,13 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroLille from "../components/generelt/HeroLille.astro";
+import TekstCenter from "../components/afsnit/TekstCenter.astro";
 import AnsatSektion from "../components/om-os/AnsatSektion.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
 ---
 
-
 <Layout pagetitle='Hvem er vi?'>
   <HeroLille titel='Hvem er vi?' billede='/assets/hej.jpeg' farve='text-background1' />
+  <TekstCenter
+    titel='Holdet bag'
+    tekst='Hjælp Din Næstes hold består af en lønnet ledelse, som driver alt projekt, administration og fundraising samt et dedikeret frivillighold som muliggøre Projekt Nyt Hjem, Uddeling og Julegaveuddelinger. Ledelsen er primært dannet af organisationes stifter & medstiftere. Hjælp Din Næstes strategi er udarbejdet i samarbejde med bestyrelsen.'
+  />
   <AnsatSektion />
   <FooterMedlem />
 </Layout>

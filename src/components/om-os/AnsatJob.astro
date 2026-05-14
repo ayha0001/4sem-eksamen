@@ -1,0 +1,15 @@
+---
+const { title } = Astro.props;
+---
+
+<article class='bg-background2 overflow-hidden rounded-t-md rounded-b-none'>
+  <div class='aspect-square w-full'></div>
+
+  <div class='bg-background2 flex flex-col justify-end px-4 pt-4 pb-3 md:px-6 md:pb-6'>
+    <h2 class='text-secondary text-m-title2 md:text-title2 font-bold'>
+      {title}
+    </h2>
+
+    <img src='/assets/grafik/job-titel-streg-rød.svg' alt='' class='ml-auto w-46' />
+  </div>
+</article>

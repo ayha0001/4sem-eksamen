@@ -4,12 +4,16 @@ import HeroLille from '../components/generelt/HeroLille.astro';
 import BetalingsKomponent from '../components/stoet-form/Betaling.astro';
 ---
 
-<Layout>
+<Layout pagetitle="Betaling">
+  <main class="min-h-screen p-4 lg:p-8">
 
-	<main class="min-h-screen p-4 lg:p-8">
-    <HeroLille titel="BETALING" baggrund="bg-background1" farve="text-primary" />
-    <BetalingsKomponent />
+    <HeroLille
+      titel="BETALING"
+      baggrund="bg-background1"
+      farve="text-primary"
+    />
 
-</main>
+    <BetalingsKomponent currentStep={3} />
 
-    </Layout>
+  </main>
+</Layout>

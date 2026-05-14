@@ -237,6 +237,10 @@ const socialLinks = [
       newsletterBtn.disabled = true;
       newsletterBtn.style.transition = "all 0.5s ease-out";
 
+      // Play send sound
+      const sound = new Audio("/assets/send.mp3");
+      sound.play();
+
       // Create checkmark
       newsletterBtn.textContent = "✓";
       newsletterBtn.style.backgroundColor = "var(--primary)";

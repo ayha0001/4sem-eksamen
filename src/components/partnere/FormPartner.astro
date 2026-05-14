@@ -133,5 +133,14 @@ import Knap from "../generelt/Knap.astro";
 
     successMessage?.classList.remove("opacity-0");
     successMessage?.classList.add("opacity-100");
+
+    const sound = new Audio("/assets/send.mp3");
+    sound.play();
+
+    const btn = submitButton as HTMLButtonElement;
+    btn.disabled = true;
+    btn.style.cursor = "not-allowed";
+    btn.style.opacity = "0.6";
+    btn.textContent = "INDSENDT";
   });
 </script>
