@@ -1,0 +1,203 @@
+---
+import Link from "../generelt/Link.astro";
+---
+
+<section class="relative h-[85vh] overflow-hidden lg:min-h-screen">
+
+  <!-- Hero billede -->
+  <img
+    src="/assets/img/Hero.webp"
+    alt=""
+    class="absolute inset-0 h-full w-full object-cover object-[20%_center] lg:object-center"
+  />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-secondary/30"></div>
+
+  <!-- Hero tekst -->
+  <div class="absolute bottom-8 left-4 z-20 max-w-65 lg:bottom-16 lg:left-10 lg:max-w-none">
+
+    <h2 class="font-visuals text-m-visuals uppercase leading-none text-background1 lg:text-visuals">
+  Sammen hæver vi
+  <br class="hidden lg:block" />
+
+  <span class="text-primary">
+    livskvaliteten
+  </span>
+
+  for
+  <br />
+
+  udsatte mennesker
+</h2>
+
+    <!-- Mobil knap -->
+    <div class="mt-5 lg:hidden">
+
+      <Link
+        href="/stoet-os"
+        variant="primary2"
+        size="medium"
+      >
+        STØT NU
+      </Link>
+
+    </div>
+
+  </div>
+
+  <!-- Desktop donation card -->
+  <div class="relative z-10 hidden min-h-screen items-center justify-center px-4 py-10 lg:flex lg:justify-end lg:pr-16">
+
+    <!-- Donation card -->
+    <div class="w-full max-w-lg rounded-md bg-background1 px-6 py-10 shadow-xl lg:px-8 lg:py-14">
+
+      <!-- Inner width -->
+      <div class="mx-auto max-w-md">
+
+        <!-- Title -->
+        <h1 class="font-h1 text-m-title1 text-center uppercase leading-none text-secondary lg:text-title1">
+          Giv dit bidrag
+        </h1>
+
+        <!-- Intro -->
+        <p class="mt-4 font-body text-m-p-big leading-relaxed text-secondary lg:text-p-big">
+          Så vi sammen kan gøre en forskel for mennesker i udsatte positioner.
+        </p>
+
+        <!-- Donationstype -->
+        <div class="mt-6">
+
+          <p class="mb-2 font-body text-m-p-big text-secondary lg:text-p-big">
+            Vælg donationstype
+          </p>
+
+          <div class="flex flex-col gap-2">
+
+            <label class="flex items-center gap-2 font-body text-m-p-big text-secondary lg:text-p-big">
+              <input
+                type="radio"
+                name="donationstype"
+                class="h-5 w-5 accent-primary"
+              />
+              Engangsdonation
+            </label>
+
+            <div class="flex flex-wrap gap-5">
+
+              <label class="flex items-center gap-2 font-body text-m-p-big text-secondary lg:text-p-big">
+                <input
+                  type="radio"
+                  name="donationstype"
+                  class="h-5 w-5 accent-primary"
+                />
+                Månedligt medlemskab
+              </label>
+
+              <label class="flex items-center gap-2 font-body text-m-p-big text-secondary lg:text-p-big">
+                <input
+                  type="radio"
+                  name="donationstype"
+                  class="h-5 w-5 accent-primary"
+                />
+                Årligt medlemskab
+              </label>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Betalingstype -->
+        <div class="mt-6">
+
+          <p class="mb-2 font-body text-m-p-big text-secondary lg:text-p-big">
+            Vælg betalings type
+          </p>
+
+          <div class="flex flex-wrap gap-6">
+
+            <label class="flex items-center gap-2 font-body text-m-p-big text-secondary lg:text-p-big">
+              <input
+                type="radio"
+                name="betaling"
+                class="h-5 w-5 accent-primary"
+              />
+              MobilePay
+            </label>
+
+            <label class="flex items-center gap-2 font-body text-m-p-big text-secondary lg:text-p-big">
+              <input
+                type="radio"
+                name="betaling"
+                class="h-5 w-5 accent-primary"
+              />
+              Betalingskort
+            </label>
+
+          </div>
+
+        </div>
+
+        <!-- Oplysninger -->
+        <div class="mt-6">
+
+          <p class="mb-2 font-body text-m-p-big text-secondary lg:text-p-big">
+            Oplysninger
+          </p>
+
+          <div class="flex flex-col gap-2">
+
+            <input
+              type="tel"
+              placeholder="Telefon"
+              class="w-full rounded-md border border-secondary bg-background1 px-4 py-1.5 font-body text-m-p-big text-secondary placeholder:text-secondary focus:outline-none lg:text-p-big"
+            />
+
+            <div class="grid grid-cols-2 gap-2">
+
+              <input
+                type="text"
+                placeholder="Fornavn"
+                class="w-full rounded-md border border-secondary bg-background1 px-4 py-1.5 font-body text-m-p-big text-secondary placeholder:text-secondary focus:outline-none lg:text-p-big"
+              />
+
+              <input
+                type="text"
+                placeholder="Efternavn"
+                class="w-full rounded-md border border-secondary bg-background1 px-4 py-1.5 font-body text-m-p-big text-secondary placeholder:text-secondary focus:outline-none lg:text-p-big"
+              />
+
+            </div>
+
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full rounded-md border border-secondary bg-background1 px-4 py-1.5 font-body text-m-p-big text-secondary placeholder:text-secondary focus:outline-none lg:text-p-big"
+            />
+
+          </div>
+
+        </div>
+
+        <!-- Button -->
+        <div class="mt-6">
+
+          <Link
+            href="/stoet-os"
+            variant="primary2"
+            size="medium"
+            class="w-full justify-center"
+          >
+            STØT NU
+          </Link>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
