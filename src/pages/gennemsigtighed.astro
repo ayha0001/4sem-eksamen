@@ -55,10 +55,8 @@ import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
   imageClass='w-full object-cover'
 />
 
-<Deler ws='s' />
-
-
 <BilledeTekst
+  headingTag="h3"
   title="Hjælp, der kan mærkes"
   paragraphs={[
     "I dag bruger vi hver måned 120.000 kr. på direkte virke – møbler, lamper, billeder, køleskab til indflytninger, soveposer og nødvendigt udstyr til gadeplansuddelinger.",
@@ -71,6 +69,7 @@ import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
 />
 
 <TekstBillede
+  headingTag="h3"
   title='Din støtte, vores ansvar'
   paragraphs={[
     "For os handler arbejdet ikke kun om hvad vi gør, men hvordan vi gør det. Vi tror på, at langsigtet social forandring kræver stabile rammer, professionelle kræfter og en økonomi, der hænger sammen. Når du støtter os, støtter du derfor både direkte hjælp og en organisation, der er bygget til at holde – uden skjulte dagsordener og uden sorte huller i regnskabet.",
