@@ -28,10 +28,8 @@ const {
   <div
     class="mx-auto grid max-w-5xl grid-cols-1 items-start gap-10 lg:grid-cols-2"
   >
-
     <!-- Billede -->
     <figure class={figureClass || "order-1 w-full lg:order-1"}>
-
       <img
         src={image}
         alt={imageAlt}
@@ -40,28 +38,26 @@ const {
 
       {
         caption && (
-          <figcaption class="font-body mt-2 text-right text-m-p-small text-secondary lg:text-p-small">
+          <figcaption class="font-body text-m-p-small text-secondary lg:text-p-small mt-2 text-right">
             {caption}
           </figcaption>
         )
       }
-
     </figure>
 
     <!-- Tekst -->
     <div class={textClass || "order-2 lg:order-2"}>
-
       {
         headingTag === "h1" && (
-          <h1 class="font-body font-bold text-m-title1 lg:text-title1">
+          <h1 class="font-body text-m-title1 lg:text-title1 font-bold">
             {title}
           </h1>
         )
       }
 
-       {
+      {
         (!headingTag || headingTag === "h2") && (
-          <h2 class="font-body font-bold text-m-title2 lg:text-title2">
+          <h2 class="font-body text-m-title2 lg:text-title2 font-bold">
             {title}
           </h2>
         )
@@ -69,21 +65,17 @@ const {
 
       {
         headingTag === "h3" && (
-          <h3 class="font-body font-bold text-m-title3 lg:text-title3">
+          <h3 class="font-body text-m-title3 lg:text-title3 font-bold">
             {title}
           </h3>
         )
       }
 
       <div
-        class="font-body text-m-p-big text-secondary space-y-5 leading-relaxed lg:text-p-big"
+        class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
       >
-        {paragraphs.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))}
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       </div>
-
     </div>
-
   </div>
 </section>

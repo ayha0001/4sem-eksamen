@@ -1,28 +1,38 @@
 ---
-// types for props
+/* types for props */
 interface Props {
   billede?: string;
   titel?: string;
-  tekst: string;
+  tekst?: string;
 
-  // gør det muligt at ændre tekstfarven
+  /* gør det muligt at ændre tekstfarven */
   textColor?: string;
 
-  // gør det muligt at ændre billedets størrelse
+  /* gør det muligt at ændre billedets størrelse */
   imageSize?: string;
+
+  /* valgfrit link */
+  link?: string;
+
+  /* tekst til link */
+  linkText?: string;
 }
 
-// props
+/* props */
 const {
   billede,
   titel,
   tekst,
 
-  // standard tekstfarve hvis man ikke sender noget ind
+  /* standard tekstfarve hvis man ikke sender noget ind */
   textColor = "text-secondary",
 
-  // standard størrelse på billedet = 16 x 16
+  /* standard størrelse på billedet = 16 x 16 */
   imageSize = "h-16 w-16",
+
+  /* link props */
+  link,
+  linkText = "Læs mere",
 } = Astro.props;
 ---
 
@@ -33,13 +43,40 @@ const {
   <!-- billede vises kun hvis der findes et billede -->
   {
     billede && (
-      <img src={billede} alt={titel} class={`${imageSize} object-contain`} />
+      <img
+        src={billede}
+        alt={titel}
+        class={`${imageSize} object-contain`}
+      />
     )
   }
 
   <!-- titel vises kun hvis der findes en titel -->
-  {titel && <h3 class="text-m-title3 md:text-title3 font-semibold">{titel}</h3>}
+  {
+    titel && (
+      <h3 class="text-m-title3 md:text-title3 font-semibold">
+        {titel}
+      </h3>
+    )
+  }
 
-  <!-- tekst -->
-  <p>{tekst}</p>
+  <!-- tekst vises kun hvis der findes tekst -->
+  {tekst && <p>{tekst}</p>}
+
+  <!-- link vises kun hvis der findes et link -->
+  {
+    link && (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-primary inline-flex items-center gap-2 transition-colors duration-300"
+      >
+        {linkText}
+
+        <!-- pil -->
+        <span class="font-semibold">➜</span>
+      </a>
+    )
+  }
 </div>
