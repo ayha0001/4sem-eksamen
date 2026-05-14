@@ -7,6 +7,8 @@ import TekstBillede from "../components/afsnit/TekstBillede.astro";
 import BilledeTekst from "../components/afsnit/BilledeTekst.astro";
 import DelerCitat from "../components/forside/DelerCitat.astro";
 import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import Taeller from "../components/forside/Taeller.astro";
 ---
 
 <Layout pagetitle="Uddelinger">
@@ -38,10 +40,31 @@ import ProjektSektion from "../components/afsnit/ProjektSektion.astro";
       "På uddelingerne er 95% af det tøj vi har med ude fra ildsjæle der kommer forbi med deres brugte fine tøj. Vi vil gerne sige tusind tak til alle jer der hver mandag kommer forbi. ",
       "Du kan aflevere tøj til os på Badstuestræde 13 alle mandage mellem 12-18. Hvis du kommer forbi i dette tidsrum står vi klar med godt humør og en blomst til dig. Husk at vi kun tager imod rent og vasket tøj. ",
     ]}
-    image="/assets/grafik/hånd-hjerte.svg"
+    image="/assets/grafik/hh.svg"
+    imageAlt="Dit tøj gør en forskel"
     imageClass="!w-50 mx-auto lg:!w-75 object-contain"
   />
   <Deler ws="m" />
+
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <img
+        src="/assets/grafik/cykel.svg"
+        alt="Julegave"
+        class="mx-auto mb-4 h-18 w-20"
+      />
+      <Taeller
+        tekst1="Omfordelt for en samlet værdi af"
+        nummer={1621619}
+        tekst2="kroner i 2025"
+        underline={true}
+        textColor="text-background1"
+      />
+    </div>
+  </DelerGraa>
+
+  <Deler ws="m" />
+
   <BilledeTekst
     title="I sne og slud - cykler vi ud!"
     paragraphs={[
