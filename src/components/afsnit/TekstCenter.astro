@@ -10,9 +10,9 @@ interface Props {
 const { logo, titel, tekst } = Astro.props;
 ---
 
-<section class='container mx-auto mb-7 px-4 text-center'>
+<section class="container mx-auto mb-7 px-4 text-center">
   <!-- hvis logo er til stede, så vises det -->
-  {logo && <img src={logo} alt={titel} class='mx-auto mb-3' />}
-  <h2 class='text-m-title2 md:text-title2 mb-1 font-bold'>{titel}</h2>
-  <p class='mx-auto max-w-prose'>{tekst}</p>
+  {logo && <img src={logo} alt={titel} class="mx-auto mb-3" />}
+  <h2 class="text-m-title2 md:text-title2 mb-1 font-semibold">{titel}</h2>
+  <p class="mx-auto max-w-prose">{tekst}</p>
 </section>

@@ -1,0 +1,137 @@
+---
+//@ts-nocheck
+import Knap from "../generelt/Knap.astro";
+---
+
+<section class="mx-auto max-w-230 px-4">
+  <div class="mx-auto">
+    <!-- overskrift -->
+    <div class="mb-6 max-w-2xl">
+      <h2 class="font-body text-m-title2 lg:text-title2 mb-2 font-semibold">
+        Bliv partner
+      </h2>
+
+      <p
+        class="font-body text-m-p-big lg:text-p-big text-secondary leading-relaxed"
+      >
+        Hvis du er interesseret kan du enten ringe til os på: +45 50 19 35 09
+        eller sende os en e-mail gennem formularen her. Vi vender typisk tilbage
+        samme dag!
+      </p>
+    </div>
+
+    <!-- formular -->
+    <form id="partnerForm" class="space-y-4">
+      <!-- navn og email -->
+      <div class="grid gap-4 lg:grid-cols-2">
+        <div>
+          <label
+            for="name"
+            class="font-body text-m-p-big lg:text-p-big text-secondary"
+          >
+            Navn<span class="text-primary">*</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Indtast dit for- og efternavn"
+            required
+            class="border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none"
+          />
+        </div>
+
+        <div>
+          <label
+            for="email"
+            class="font-body text-m-p-big lg:text-p-big text-secondary"
+          >
+            E-mail<span class="text-primary">*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Indtast din e-mail"
+            required
+            class="border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none"
+          />
+        </div>
+      </div>
+
+      <!-- virksomhed -->
+      <div>
+        <label
+          for="company"
+          class="font-body text-m-p-big lg:text-p-big text-secondary"
+        >
+          Virksomhed navn<span class="text-primary">*</span>
+        </label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          placeholder="Indtast virksomhedens navn"
+          required
+          class="border-secondary font-body text-secondary focus:border-primary mt-2 w-full rounded-sm border bg-transparent px-4 py-2 outline-none"
+        />
+      </div>
+
+      <!-- besked -->
+      <div>
+        <label
+          for="message"
+          class="font-body text-m-p-big lg:text-p-big text-secondary"
+        >
+          Meddelelse<span class="text-primary">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Skriv din besked til os her"
+          required
+          class="border-secondary font-body text-secondary focus:border-primary mt-2 min-h-[220px] w-full resize-none rounded-sm border bg-transparent px-4 py-2 outline-none"
+        ></textarea>
+      </div>
+
+      <!-- knap og besked -->
+      <div class="flex flex-col items-end gap-3">
+        <Knap
+          id="partnerSubmit"
+          type="button"
+          variant="secondary2"
+          size="small"
+        >
+          INDSEND INFORMATIONER
+        </Knap>
+
+        <p
+          id="successMessage"
+          class="font-body text-m-p-small lg:text-p-small text-secondary pointer-events-none opacity-0 transition-all duration-300 ease-out"
+        >
+          Dine informationer er sendt videre.
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector("#partnerForm") as HTMLFormElement;
+  const submitButton = document.querySelector("#partnerSubmit");
+  const successMessage = document.querySelector("#successMessage");
+
+  submitButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    form.reset();
+
+    successMessage?.classList.remove("opacity-0");
+    successMessage?.classList.add("opacity-100");
+  });
+</script>
