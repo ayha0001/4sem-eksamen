@@ -6,27 +6,31 @@ const { person } = Astro.props;
 rounded-t-[5px] = afrundede hjørner øverst med 5px radius.
 rounded-b-none = ingen afrunding nederst.
 -->
-<article class='overflow-hidden rounded-t-md rounded-b-none'>
+<article class='bg-background2 flex h-full flex-col overflow-hidden rounded-t-md rounded-b-none'>
+  <!-- Billede -->
   <div class='relative aspect-square w-full overflow-hidden'>
     <img src={`/assets/holdet/${person.img}`} alt={person.full_name} class='h-full w-full object-cover object-center' loading='lazy' />
-    <div class='absolute top-4 right-4 flex flex-col'>
+
+    <!-- Ikoner -->
+    <div class='absolute top-4 right-4 flex flex-col gap-2'>
       {
         person.email && (
-          <a class='color-primary flex h-10 items-center justify-center rounded-full md:h-14 md:w-14'>
-            <img src='/assets/grafik/some-ikon/mail.svg' alt='' class='w-8 md:w-10' />
+          <a href={`mailto:${person.email}`} class='flex h-10 w-10 items-center justify-center rounded-full md:h-10 md:w-14'>
+            <img src='/assets/grafik/some-ikon/mail.svg' alt='Mail ikon' class='w-8 md:w-10' />
           </a>
         )
       }
 
       {
         person.tlf && (
-          <a class='flex h-10 items-center justify-center rounded-full md:h-14 md:w-14'>
-            <img src='/assets/grafik/some-ikon/phone.svg' alt='' class='w-10 md:w-13' />
+          <a href={`tel:${person.tlf}`} class='flex h-8 w-10 items-center justify-center rounded-full md:h-14 md:w-14'>
+            <img src='/assets/grafik/some-ikon/phone.svg' alt='Telefon ikon' class='w-10 md:w-13' />
           </a>
         )
       }
     </div>
 
+    <!-- Bølge -->
     <svg aria-hidden='true' class='text-background2 absolute inset-x-0 -bottom-4 block h-5 w-full' viewBox='0 0 301 26' preserveAspectRatio='none'>
       <path
         fill='currentColor'
@@ -35,16 +39,17 @@ rounded-b-none = ingen afrunding nederst.
     </svg>
   </div>
 
-  <div class='bg-background2 flex flex-col gap-1 px-4 pt-4 pb-3 text-center md:px-6 md:pb-6'>
+  <!-- Tekst -->
+  <div class='flex min-h-38 flex-1 flex-col px-4 pt-4 pb-3 text-center md:px-6 md:pb-6'>
     <h3 class='text-secondary text-m-title3 md:text-title3 font-semibold'>
       {person.full_name}
     </h3>
 
-    <p class='text-m-p-big md:text-p-big min-h-10 pb-2 font-medium'>
+    <p class='text-m-p-big md:text-p-big min-h-14 font-medium'>
       {person.title}
     </p>
 
-    <p class='text-m-p-small md:text-p-small leading-tight font-light'>
+    <p class='text-m-p-small md:text-p-small font-light'>
       {person.extra}
     </p>
   </div>
