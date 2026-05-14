@@ -4,14 +4,16 @@ import HeroLille from '../components/generelt/HeroLille.astro';
 import Oplysninger from '../components/stoet-form/Oplysninger.astro';
 ---
 
-<Layout>
+<Layout pagetitle="Oplysninger">
+  <main class="min-h-screen p-4 lg:p-8">
 
-	<main class="min-h-screen p-4 lg:p-8">
-    <HeroLille titel="STØT OS" baggrund="bg-background1" farve="text-primary" />
+    <HeroLille
+      titel="STØT OS"
+      baggrund="bg-background1"
+      farve="text-primary"
+    />
 
+    <Oplysninger currentStep={2} />
 
-    <Oplysninger />
-
-</main>
-
-    </Layout>
+  </main>
+</Layout>

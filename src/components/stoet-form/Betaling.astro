@@ -1,96 +1,147 @@
 ---
 import Link from '../generelt/Link.astro';
+
+interface Props {
+  currentStep?: number;
+}
+
+const { currentStep = 3 } = Astro.props;
 ---
 
-<section class="container mx-auto px-4 max-w-2xl mt-2 lg:mt-8">
-        
-<div class="w-full max-w-sm mx-auto mt-14 mb-8 font-body lg:max-w-xl lg:mb-10">
+<section class="container mx-auto mt-2 max-w-2xl px-4 lg:mt-8">
 
-  <!-- Tekst -->
-  <div class="flex justify-between text-secondary mt-6">
-    <p>Vælg</p>
-    <p>Oplysninger</p>
-    <p>Betaling</p>
-    <p>Bekræftelse</p>
+  <!-- STEPS -->
+  <div class="mx-auto mt-14 mb-8 w-full max-w-sm font-body lg:mb-10 lg:max-w-xl">
+
+    <!-- Tekst -->
+    <div class="mt-6 flex justify-between text-secondary">
+      <p>Vælg</p>
+      <p>Oplysninger</p>
+      <p>Betaling</p>
+      <p>Bekræftelse</p>
+    </div>
+
+    <!-- Linje + cirkler -->
+    <div class="relative mt-4 flex items-center justify-between">
+
+      <!-- Linje -->
+      <div class="absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 bg-primary"></div>
+
+      <!-- Cirkel 1 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 1
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        1
+      </div>
+
+      <!-- Cirkel 2 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 2
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        2
+      </div>
+
+      <!-- Cirkel 3 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 3
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        3
+      </div>
+
+      <!-- Cirkel 4 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 4
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        4
+      </div>
+
+    </div>
   </div>
 
-  <!-- Linje + cirkler -->
-  <div class="relative flex justify-between items-center mt-4">
+  <!-- PAYMENT CARD -->
+  <div class="mx-auto mt-ws-s flex w-full max-w-md flex-col items-center rounded-2xl bg-background2 px-6 py-8 font-body text-secondary shadow-sm lg:px-10 lg:py-10">
 
-    <!-- Linje -->
-    <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-primary -translate-y-1/2"></div>
-
-    <!-- Cirkel 1 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      1
-    </div>
-
-    <!-- Cirkel 2 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      2
-    </div>
-
-    <!-- Cirkel 3 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      3
-    </div>
-
-    <!-- Cirkel 4 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      4
-    </div>
-
-  </div>
-</div>
-
-<div class="mx-auto mt-ws-s flex w-full max-w-md flex-col items-center rounded-2xl bg-background2 px-6 py-8 font-body text-secondary shadow-sm lg:px-10 lg:py-10">
-  <img
-    src="/assets/grafik/logo.svg"
-    alt="Hjælp Din Næste logo"
-    class="w-28 lg:w-32"
-  />
-
-  <h3 class="mt-ws-xs text-center text-m-title3 font-semibold text-secondary lg:text-title3">
-    Hjælp Din Næste
-  </h3>
-
-  <h3 class="mt-2 text-center font-h1 text-m-title1 uppercase text-primary lg:text-title2">
-    299 DKK
-  </h3>
-
-  <label class="mt-ws-xs w-full">
-    <span class="block pb-2 text-m-p-big font-semibold text-secondary lg:text-p-big">
-      Tlf nr.
-    </span>
-
-    <input
-      type="text"
-      placeholder="34 56 67 78"
-      class="w-full rounded-md border-2 border-secondary bg-background1 px-5 py-3 text-m-p-big focus:outline-none lg:text-p-big"
-    />
-  </label>
-
-  <div class="mt-ws-xs flex items-center justify-center">
-    <input
-      id="remember-phone"
-      type="checkbox"
-      name="remember-phone"
-      class="h-5 w-5 rounded border-2 border-primary bg-background2 text-primary lg:h-6 lg:w-6"
+    <!-- Logo -->
+    <img
+      src="/assets/grafik/logo.svg"
+      alt="Hjælp Din Næste logo"
+      class="w-28 lg:w-32"
     />
 
-    <label
-      for="remember-phone"
-      class="ml-3 select-none text-m-p-big lg:text-p-big"
-    >
-      Husk mit nummer
+    <!-- Navn -->
+    <h3 class="mt-ws-xs text-center text-m-title3 font-semibold text-secondary lg:text-title3">
+      Hjælp Din Næste
+    </h3>
+
+    <!-- Beløb -->
+    <h3 class="mt-2 text-center font-h1 text-m-title1 uppercase text-primary lg:text-title2">
+      299 DKK
+    </h3>
+
+    <!-- Telefonnummer -->
+    <label class="mt-ws-xs w-full">
+
+      <span class="block pb-2 text-m-p-big font-semibold text-secondary lg:text-p-big">
+        Tlf nr.
+      </span>
+
+      <input
+        type="text"
+        placeholder="34 56 67 78"
+        class="w-full rounded-md border-2 border-secondary bg-background1 px-5 py-3 text-m-p-big focus:outline-none lg:text-p-big"
+      />
+
     </label>
+
+    <!-- Husk nummer -->
+    <div class="mt-ws-xs flex items-center justify-center">
+
+      <input
+        id="remember-phone"
+        type="checkbox"
+        name="remember-phone"
+        class="h-5 w-5 rounded border-2 border-primary bg-background2 text-primary lg:h-6 lg:w-6"
+      />
+
+      <label
+        for="remember-phone"
+        class="ml-3 select-none text-m-p-big lg:text-p-big"
+      >
+        Husk mit nummer
+      </label>
+
+    </div>
+
+    <!-- Button -->
+    <Link
+      href="/tak"
+      variant="primary2"
+      size="medium"
+      class="mt-6 w-full"
+    >
+      Betal
+    </Link>
+
   </div>
-
-
-<Link href="/tak" variant="primary2" size="medium" class="w-full mt-6">
-  Betal
-</Link>
-
-</div>
 
 </section>

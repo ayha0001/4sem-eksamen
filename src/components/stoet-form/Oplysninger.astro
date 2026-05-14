@@ -1,57 +1,99 @@
 ---
 import Link from '../generelt/Link.astro';
+
+interface Props {
+  currentStep?: number;
+}
+
+const { currentStep = 2 } = Astro.props;
 ---
 
-<section class="container mx-auto px-4 max-w-2xl mt-2 lg:mt-8">
-        
-<div class="w-full max-w-sm mx-auto mt-14 mb-8 font-body lg:max-w-xl lg:mb-10">
+<section class="container mx-auto mt-2 max-w-2xl px-4 lg:mt-8">
 
-  <!-- Tekst -->
-  <div class="flex justify-between text-secondary mt-6">
-    <p>Vælg</p>
-    <p>Oplysninger</p>
-    <p>Betaling</p>
-    <p>Bekræftelse</p>
+  <!-- STEPS -->
+  <div class="mx-auto mt-14 mb-8 w-full max-w-sm font-body lg:mb-10 lg:max-w-xl">
+
+    <!-- Tekst -->
+    <div class="mt-6 mb-3 flex justify-between text-secondary">
+      <p>Vælg</p>
+      <p>Oplysninger</p>
+      <p>Betaling</p>
+      <p>Bekræftelse</p>
+    </div>
+
+    <!-- Linje + cirkler -->
+    <div class="relative flex items-center justify-between">
+
+      <!-- Linje -->
+      <div class="absolute top-1/2 left-0 right-0 h-0.5 -translate-y-1/2 bg-primary"></div>
+
+      <!-- Cirkel 1 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 1
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        1
+      </div>
+
+      <!-- Cirkel 2 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 2
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        2
+      </div>
+
+      <!-- Cirkel 3 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 3
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        3
+      </div>
+
+      <!-- Cirkel 4 -->
+      <div
+        class:list={[
+          "relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 text-p-small lg:h-6 lg:w-6 lg:text-m-p-small",
+          currentStep >= 4
+            ? "border-primary bg-primary text-background1"
+            : "border-secondary bg-background1 text-primary"
+        ]}
+      >
+        4
+      </div>
+
+    </div>
   </div>
 
-  <!-- Linje + cirkler -->
-  <div class="relative flex justify-between items-center mt-4">
-
-    <!-- Linje -->
-    <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-primary -translate-y-1/2"></div>
-
-    <!-- Cirkel 1 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      1
-    </div>
-
-    <!-- Cirkel 2 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      2
-    </div>
-
-    <!-- Cirkel 3 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      3
-    </div>
-
-    <!-- Cirkel 4 -->
-    <div class="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-secondary bg-background1 text-primary text-p-small lg:h-6 lg:w-6 lg:text-m-p-small">
-      4
-    </div>
-
-  </div>
-</div>
-
+  <!-- FORM -->
   <form class="mx-auto flex w-full max-w-2xl flex-col gap-6">
-  
+
     <p class="mt-6 text-m-p-big lg:text-p-big">
       Indtast dine oplysninger
     </p>
 
+    <!-- Inputs -->
     <div class="flex flex-col gap-5">
+
       <label class="flex flex-col gap-2 text-m-p-big lg:text-p-big">
-        <span>For- og efternavn<span class="text-primary">*</span></span>
+        <span>
+          For- og efternavn
+          <span class="text-primary">*</span>
+        </span>
+
         <input
           type="text"
           placeholder="Tekst"
@@ -61,7 +103,11 @@ import Link from '../generelt/Link.astro';
       </label>
 
       <label class="flex flex-col gap-2 text-m-p-big lg:text-p-big">
-        <span>E-mail<span class="text-primary">*</span></span>
+        <span>
+          E-mail
+          <span class="text-primary">*</span>
+        </span>
+
         <input
           type="email"
           placeholder="Tekst"
@@ -71,7 +117,11 @@ import Link from '../generelt/Link.astro';
       </label>
 
       <label class="flex flex-col gap-2 text-m-p-big lg:text-p-big">
-        <span>Telefon<span class="text-primary">*</span></span>
+        <span>
+          Telefon
+          <span class="text-primary">*</span>
+        </span>
+
         <input
           type="tel"
           placeholder="Tekst"
@@ -79,16 +129,21 @@ import Link from '../generelt/Link.astro';
           class="w-full rounded-md border-2 border-secondary bg-background1 px-5 py-3 text-m-p-big focus:outline-none lg:text-p-big"
         />
       </label>
+
     </div>
 
     <!-- Checkboxes -->
     <div class="mt-4 flex flex-col gap-4 rounded-md p-5">
+
       <label class="flex cursor-pointer items-start gap-3 text-m-p-small text-secondary lg:text-p-big">
         <input
           type="checkbox"
           class="mt-1 h-5 w-5 accent-primary"
         />
-        <span>Ja tak, jeg ønsker skattefradrag</span>
+
+        <span>
+          Ja tak, jeg ønsker skattefradrag
+        </span>
       </label>
 
       <label class="flex cursor-pointer items-start gap-3 text-m-p-small text-secondary lg:text-p-big">
@@ -97,6 +152,7 @@ import Link from '../generelt/Link.astro';
           required
           class="mt-1 h-5 w-5 accent-primary"
         />
+
         <span>
           Jeg accepterer
           <a href="#" class="font-semibold text-primary underline">
@@ -112,6 +168,7 @@ import Link from '../generelt/Link.astro';
           required
           class="mt-1 h-5 w-5 accent-primary"
         />
+
         <span>
           Jeg har læst
           <a href="#" class="font-semibold text-primary underline">
@@ -120,11 +177,13 @@ import Link from '../generelt/Link.astro';
           <span class="text-primary">*</span>
         </span>
       </label>
+
     </div>
 
-   <Link href="/betaling" variant="primary2" size="medium">
-  Videre
-</Link>
-    </div>
+    <!-- Button -->
+    <Link href="/betaling" variant="primary2" size="medium">
+      Videre
+    </Link>
+
   </form>
 </section>
