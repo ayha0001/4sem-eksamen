@@ -1,14 +1,21 @@
 ---
-import StoetForm from "../components/stoet-form/StoetForm.astro";
-import Layout from "../layouts/Layout.astro";
-import HeroLille from "../components/generelt/HeroLille.astro";
+import Layout from '../layouts/Layout.astro';
+import HeroLille from '../components/generelt/HeroLille.astro';
+import StoetForm from '../components/stoet-form/StoetForm.astro';
 ---
 
 <Layout pagetitle="Støt os">
 
-	<main class="min-h-screen p-4 lg:p-8">
- <HeroLille titel="STØT OS" baggrund="bg-background1" farve="text-primary" />
+  <main class="min-h-screen p-4 lg:p-8">
 
-        <StoetForm />
-    </main>
-    </Layout>
+    <HeroLille
+      titel="STØT OS"
+      baggrund="bg-background1"
+      farve="text-primary"
+    />
+
+    <StoetForm currentStep={1} />
+
+  </main>
+
+</Layout>
