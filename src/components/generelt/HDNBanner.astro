@@ -1,13 +1,23 @@
 ---
-const { text = "HJÆLP DIN NÆSTE" } = Astro.props;
+/* props */
+const {
+  text = "HJÆLP DIN NÆSTE",
+
+  /* gør det muligt at ændre baggrundsfarve */
+  backgroundColor = "bg-background1",
+
+  /* gør det muligt at ændre tekstfarve */
+  textColor = "text-secondary",
+} = Astro.props;
 ---
 
-<div class="bg-background1 w-full overflow-hidden py-2">
+<!-- banner -->
+<div class={`${backgroundColor} w-full overflow-hidden py-2`}>
   <div class="flex items-center justify-between gap-6 px-6 whitespace-nowrap">
     {
       Array.from({ length: 9 }).map((_, index) => (
         <span
-          class={`font-body text-m-p-big lg:text-p-big text-secondary tracking-wide uppercase ${
+          class={`font-body text-m-p-big lg:text-p-big tracking-wide uppercase ${textColor} ${
             index % 2 === 0 ? "font-normal" : "font-semibold"
           }`}
         >

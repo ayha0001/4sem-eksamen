@@ -9,6 +9,8 @@ import PartnerBanner from "../components/partnere/PartnerBanner.astro";
 import PartnerSektion from "../components/partnere/PartnerSektion.astro";
 import PartnerSektion2 from "../components/partnere/PartnerSektion2.astro";
 import PartnerSektion3 from "../components/partnere/PartnerSektion3.astro";
+import DelerGraa from "../components/generelt/DelerGraa.astro";
+import IkonKort from "../components/afsnit/IkonKort.astro";
 ---
 
 <Layout pagetitle="Partnere">
@@ -16,8 +18,9 @@ import PartnerSektion3 from "../components/partnere/PartnerSektion3.astro";
     titel="PARTNERE"
     billede="/assets/img/part-hero.webp"
     farve="text-background1"
+    billedePlacering="50% 46%"
   />
-
+  <Deler ws="m" />
   <TekstBillede
     title="Vores partnere øgerlivskvaliteten for gadens folk"
     paragraphs={[
@@ -30,7 +33,23 @@ import PartnerSektion3 from "../components/partnere/PartnerSektion3.astro";
     caption="Indkøb hos vores faste sponsor Rema 1000 Valby "
     imageClass="h-130 w-full object-cover object-top"
   />
-  <!-- gråt banner -->
+  <Deler ws="m" />
+  <DelerGraa>
+    <div class="mx-auto max-w-lg px-4">
+      <h2
+        class="font-visuals text-m-title1 md:text-visuals text-background1 -mb-2 text-center"
+      >
+        Vores mål
+      </h2>
+      <IkonKort
+        billede="/assets/grafik/hænder-rød.svg"
+        tekst="Ved at prioritere genbrug frem for nyindkøb og basere vores arbejde på overskud frem for overforbrug."
+        textColor="text-background1"
+        imageSize="h-24 w-24"
+      />
+    </div>
+  </DelerGraa>
+  <Deler ws="m" />
   <FormPartner />
 
   <PartnerBanner text="Faste sponsorer" />
