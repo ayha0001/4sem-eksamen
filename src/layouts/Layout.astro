@@ -19,7 +19,11 @@ const { pagetitle } = Astro.props;
   >
   <Header />
   <slot />
-  <HDNBanner text="HJÆLP DIN NÆSTE" />
+  <HDNBanner
+    text="HJÆLP DIN NÆSTE"
+    backgroundColor="bg-background1"
+    textColor="text-secondary"
+  />
   <Footer />
   <script>
     import AOS from "aos";
