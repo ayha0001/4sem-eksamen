@@ -1,17 +1,82 @@
 ---
-// types for props
+/* types for props */
 interface Props {
   billede?: string;
   titel?: string;
-  tekst: string;
+  tekst?: string;
+
+  /* gør det muligt at ændre tekstfarven */
+  textColor?: string;
+
+  /* gør det muligt at ændre billedets størrelse */
+  imageSize?: string;
+
+  /* valgfrit link */
+  link?: string;
+
+  /* tekst til link */
+  linkText?: string;
 }
 
-// læser props og tjekker dem mod Props-typen, så vi er sikre på at de er gyldige
-const { billede, titel, tekst } = Astro.props;
+/* props */
+const {
+  billede,
+  titel,
+  tekst,
+
+  /* standard tekstfarve hvis man ikke sender noget ind */
+  textColor = "text-secondary",
+
+  /* standard størrelse på billedet = 16 x 16 */
+  imageSize = "h-16 w-16",
+
+  /* link props */
+  link,
+  linkText = "Læs mere",
+} = Astro.props;
 ---
 
-<div class="flex flex-col items-center gap-4 rounded-lg p-6 text-center">
-  {billede && <img src={billede} alt={titel} class="h-16 w-16" />}
-  {titel && <h3 class="text-m-title3 md:text-title3 font-semibold">{titel}</h3>}
-  <p>{tekst}</p>
+<!-- wrapper -->
+<div
+  class={`flex flex-col items-center gap-4 rounded-lg p-6 text-center ${textColor}`}
+>
+  <!-- billede vises kun hvis der findes et billede -->
+  {
+    billede && (
+      <img
+        src={billede}
+        alt={titel}
+        class={`${imageSize} object-contain`}
+      />
+    )
+  }
+
+  <!-- titel vises kun hvis der findes en titel -->
+  {
+    titel && (
+      <h3 class="text-m-title3 md:text-title3 font-semibold">
+        {titel}
+      </h3>
+    )
+  }
+
+  <!-- tekst vises kun hvis der findes tekst -->
+  {tekst && <p>{tekst}</p>}
+
+  <!-- link vises kun hvis der findes et link -->
+  {
+    link && (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-primary inline-flex items-center gap-2 transition-colors duration-300"
+      >
+        {linkText}
+
+        <!-- pil -->
+        <span class="font-semibold">➜</span>
+      </a>
+    )
+  }
 </div>
