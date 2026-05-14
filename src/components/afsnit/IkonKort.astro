@@ -4,14 +4,42 @@ interface Props {
   billede?: string;
   titel?: string;
   tekst: string;
+
+  // gør det muligt at ændre tekstfarven
+  textColor?: string;
+
+  // gør det muligt at ændre billedets størrelse
+  imageSize?: string;
 }
 
-// læser props og tjekker dem mod Props-typen, så vi er sikre på at de er gyldige
-const { billede, titel, tekst } = Astro.props;
+// props
+const {
+  billede,
+  titel,
+  tekst,
+
+  // standard tekstfarve hvis man ikke sender noget ind
+  textColor = "text-secondary",
+
+  // standard størrelse på billedet = 16 x 16
+  imageSize = "h-16 w-16",
+} = Astro.props;
 ---
 
-<div class="flex flex-col items-center gap-4 rounded-lg p-6 text-center">
-  {billede && <img src={billede} alt={titel} class="h-16 w-16" />}
+<!-- wrapper -->
+<div
+  class={`flex flex-col items-center gap-4 rounded-lg p-6 text-center ${textColor}`}
+>
+  <!-- billede vises kun hvis der findes et billede -->
+  {
+    billede && (
+      <img src={billede} alt={titel} class={`${imageSize} object-contain`} />
+    )
+  }
+
+  <!-- titel vises kun hvis der findes en titel -->
   {titel && <h3 class="text-m-title3 md:text-title3 font-semibold">{titel}</h3>}
+
+  <!-- tekst -->
   <p>{tekst}</p>
 </div>

@@ -1,12 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroLille from "../components/generelt/HeroLille.astro";
+import DropDown from "../components/faq/DropDown.astro";
+import Link from "../components/generelt/Link.astro";
 import FooterMedlem from "../components/generelt/FooterMedlem.astro";
+import TekstBillede from "../components/afsnit/TekstBillede.astro";
+import Deler from "../components/generelt/Deler.astro";
+---
 
-
-<Layout>
-<HeroLille titel="Kontakt os" baggrund="bg-background1" farve="text-primary" />
-
-<FooterMedlem />
-
+<Layout pagetitle="FAQ">
+  <HeroLille titel="Kontakt os" farve="text-primary" />
+  <Deler ws="s" />
+  <TekstBillede
+    title="Har du brug for hjælp?"
+    paragraphs={[]}
+    ,
+    image="/assets/grafik/brev.svg"
+    imageAlt="Brev ikon"
+    imageClass="!w-80 mx-auto lg:!w-70 object-contain"
+  >
+    <p
+      class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+    >
+      Så kan du kontakte os på:
+    </p>
+    <p
+      class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+    >
+      Tlf. <a href="tel:+4581111192">+45 81 11 11 92</a> (tidsrum)
+    </p>
+    <p
+      class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+    >
+      E-mail: <a href="mailto:hdn@hjaelpdinnaeste.org"
+        >hdn@hjaelpdinnaeste.org</a
+      >
+    </p>
+    <p
+      class="font-body text-m-p-big text-secondary lg:text-p-big space-y-5 leading-relaxed"
+    >
+      Så vil vi vende tilbage hurtigst muligt.
+    </p>
+  </TekstBillede>
+  <Deler ws="l" />
+  <FooterMedlem />
 </Layout>
