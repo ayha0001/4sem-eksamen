@@ -11,6 +11,9 @@ interface Props {
   /* gør det muligt at ændre billedets størrelse */
   imageSize?: string;
 
+  /* gør det muligt at style billedet */
+  imageClass?: string;
+
   /* valgfrit link */
   link?: string;
 
@@ -30,6 +33,9 @@ const {
   /* standard størrelse på billedet = 16 x 16 */
   imageSize = "h-16 w-16",
 
+  /* ekstra classes til billedet */
+  imageClass = "",
+
   /* link props */
   link,
   linkText = "Læs mere",
@@ -46,7 +52,7 @@ const {
       <img
         src={billede}
         alt={titel}
-        class={`${imageSize} object-contain`}
+        class={`${imageSize} ${imageClass} object-contain`}
       />
     )
   }
