@@ -6,21 +6,21 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative w-full overflow-hidden bg-background1 py-4">
-  <img
-    src={bg}
-    alt=""
-    class="absolute inset-0 h-full w-full object-cover"
-  />
+<section class="bg-background1 relative w-full overflow-hidden py-4">
+  <img src={bg} alt="" class="absolute inset-0 h-full w-full object-cover" />
 
-  <div class="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-10 md:flex-row items-end justify-center">
-    <blockquote class="w-full max-w-4xl font-visuals text-m-visuals uppercase leading-tight text-background2 lg:text-visuals">
+  <div
+    class="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-end justify-center gap-4 px-4 py-10 md:flex-row"
+  >
+    <blockquote
+      class="font-visuals text-m-visuals text-background2 lg:text-visuals w-full max-w-4xl rotate-[-2deg] leading-tight uppercase"
+    >
       <span class="text-primary">“</span>
       {quote}
       <span class="text-primary">”</span>
     </blockquote>
 
-    <p class="text-m-p-small text-background2 md:mb-4 md:text-p-small">
+    <p class="text-m-p-small text-background2 md:text-p-small md:mb-4">
       {source}
     </p>
   </div>
